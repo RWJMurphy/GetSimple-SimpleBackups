@@ -1,7 +1,6 @@
 <?php
 function sb_render_header() {
     $menu = array(
-        "formats" => "Archive Formats",
         "schedules" => "Schedules",
         "destinations" => "Destinations",
         "sources" => "Sources",
