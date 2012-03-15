@@ -17,30 +17,32 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     redirect(sb_link("run_backup") . "&$message_class=" . urlencode($message));
     exit;
 }
+
+$last = $data['last_run'];
 ?>
     <form action="<?php echo sb_link("run_backup"); ?>" method="POST">
 Backup
 <select name="source">
     <option value="" disabled="disabled">Source</option>
 <?php foreach($data['sources'] as $key => $source): ?>
-    <option value="<?php echo $key; ?>" ><?php echo $source['name']; ?></option>
+    <option <?php if ($last['source'] == $key) { echo 'selected="selected" '; } ?> value="<?php echo $key; ?>" ><?php echo $source['name']; ?></option>
 <?php endforeach; ?>
 </select>
 to
 <select name="destination">
     <option value="" disabled="disabled">Destination</option>
 <?php foreach($data['destinations'] as $key => $destination): ?>
-    <option value="<?php echo $key; ?>" ><?php echo $destination['name']; ?></option>
+    <option <?php if ($last['destination'] == $key) { echo 'selected="selected" '; } ?> value="<?php echo $key; ?>" ><?php echo $destination['name']; ?></option>
 <?php endforeach; ?>
 </select>
 as
 <select name="format">
     <option value="" disabled="disabled">Format</option>
 <?php foreach($data['archive_formats'] as $format): ?>
-    <option value="<?php echo $format; ?>" ><?php echo $format; ?></option>
+    <option <?php if ($last['archive_format'] == $format) { echo 'selected="selected" '; } ?> value="<?php echo $format; ?>" ><?php echo $format; ?></option>
 <?php endforeach; ?>
 </select>
-, keeping <input name="limit" size="2"/> backups.
+, keeping <input name="limit" size="2" <?php if ($last['limit']) { echo 'value="' . $last['limit'] . '" '; } ?> /> backups.
 
 <input type="submit" value="Go!" />
 </form>

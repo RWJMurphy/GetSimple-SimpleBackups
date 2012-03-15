@@ -5,7 +5,8 @@ $sb_config = array(
         "sources" => GSDATAOTHERPATH . "scheduled_backups/sources.xml",
         "destinations" => GSDATAOTHERPATH . "scheduled_backups/destinations.xml",
         "schedules" => GSDATAOTHERPATH . "scheduled_backups/schedules.xml",
-        "archive_formats" => GSDATAOTHERPATH . "scheduled_backups/archive_formats.xml"
+        "archive_formats" => GSDATAOTHERPATH . "scheduled_backups/archive_formats.xml",
+        "last_run" => GSDATAOTHERPATH . "scheduled_backups/last_run.xml"
     ),
     "default_settings" => array(
         "sources" => array(
@@ -31,6 +32,12 @@ $sb_config = array(
         "archive_formats" => array(
             ".tar.gz",
             ".zip"
+        ),
+        "last_run" => array(
+            "source" => 0,
+            "destination" => 0,
+            "format" => ".tar.gz",
+            "limit" => 10
         )
     ),
     "binaries" => array(

@@ -1,7 +1,7 @@
 <?php
 function sb_load() {
     $data = array();
-    foreach (array("sources", "destinations", "schedules", "archive_formats") as $thing) {
+    foreach (array("sources", "destinations", "schedules", "archive_formats", "last_run") as $thing) {
         $data[$thing] = sb_load_thing($thing);
     }
     return $data;
