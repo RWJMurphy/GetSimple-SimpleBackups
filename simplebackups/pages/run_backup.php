@@ -6,19 +6,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $format = $_POST['format'];
     $limit = intval($_POST['limit']);
     $limit = $limit <= 0 ? null : $limit;
+
+    sb_save_thing("last_run", array(array(
+        "source" => $_POST['source'],
+        "destination" => $_POST['destination'],
+        "limit" => $limit,
+        "archive_format" => $format
+    )));
+
     $result = sb_run_backup($source, $destination, $format, $limit);
     if ($result) {
         $message = "Backup successful!";
         $message_class = "success";
     } else {
-        $message = "An error occurred performing the backup! I have no idea why.";
+        $message = sb_get_error();
         $message_class = "error";
     }
     redirect(sb_link("run_backup") . "&$message_class=" . urlencode($message));
     exit;
 }
 
-$last = $data['last_run'];
+$last = $data['last_run'][0];
 ?>
 <h2>Run Backup Now</h2>
 <form action="<?php echo sb_link("run_backup"); ?>" method="POST">
