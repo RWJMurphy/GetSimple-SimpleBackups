@@ -1,5 +1,17 @@
 <?php
 $sb_config = array(
+    "menu_actions" => array(
+        "run_backup" => "Run Backup Now",
+        "sources" => "Sources",
+        "destinations" => "Destinations",
+        "schedules" => "Schedules"
+    ),
+    "submenu_actions" => array(
+        "run_backup" => array(),
+        "sources" => array(),
+        "destinations" => array(),
+        "schedules" => array()
+    ),
     "default_action" => "run_backup",
     "xml" => array(
         "sources" => GSDATAOTHERPATH . "scheduled_backups/sources.xml",

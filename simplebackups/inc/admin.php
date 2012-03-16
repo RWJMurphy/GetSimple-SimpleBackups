@@ -1,15 +1,12 @@
 <?php
 function sb_render_header() {
-    $menu = array(
-        "schedules" => "Schedules",
-        "destinations" => "Destinations",
-        "sources" => "Sources",
-        "run_backup" => "Run Backup Now"
-    );
+    $sb_config = sb_config();
+    $action = sb_current_action();
+    $submenu = $sb_config['submenu_actions'][$action];
 ?>
     <h3 class="floated"><?php echo SB_NAME; ?></h3>
     <div class="edit-nav clearfix">
-<?php foreach($menu as $action => $text) { ?>
+<?php foreach($submenu as $action => $text) { ?>
     <a <?php if (sb_is_current_action($action)) { echo 'class="current"'; } ?> href="<?php echo sb_link($action); ?>"><?php echo $text; ?></a>
 <?php } ?>
     </div>

@@ -1,18 +1,30 @@
 <?php
-function sb_link($action=Null) {
+function sb_link($action=Null, $target=Null) {
     $link = "?id=" . SB_SHORTNAME;
-    if ($action) {
-        $link .= "&action=$action";
+    if ($action !== Null) {
+        $link .= "&$action";
+    }
+    if ($target !== Null) {
+        $link .= "&target=$target";
     }
     return $link;
 }
 
 function sb_is_current_action($action) {
+    return $action == sb_current_action();
+}
+
+function sb_current_action() {
     $sb_config = sb_config();
-    return (
-        (isset($_GET['action']) && $_GET['action'] == $action) or
-        (!isset($_GET['action']) && $sb_config['default_action'] == $action)
-    );
+    $selected_action = Null;
+    foreach ($sb_config['menu_actions'] as $action => $description) {
+        if (isset($_GET[$action])) {
+            $selected_action = $action;
+            break;
+        }
+    }
+    $selected_action = $selected_action ? $selected_action : $sb_config['default_action'];
+    return $selected_action;
 }
 
 function sb_tempfile($filename) {
