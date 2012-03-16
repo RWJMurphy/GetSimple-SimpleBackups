@@ -20,7 +20,7 @@ function sb_load_thing($thing) {
             foreach($thing_instance_xml->children() as $child) {
                 $thing_instance[$child->getName()] = (string)$child;
             }
-            $data[] = $thing_instance;
+            $data[(string)$thing_instance_xml['id']] = $thing_instance;
         }
     } else {
         $data = $sb_config['default_settings'][$thing];
@@ -40,6 +40,7 @@ function sb_save_thing($thing, $data) {
         foreach($thing_instance as $attr => $value) {
             $child->addChild($attr, $value);
         }
+        $child->addAttribute("id", $id);
     }
 
     return $xml->asXML($xml_filename);
@@ -169,6 +170,54 @@ function sb_delete_source($id) {
     $result = sb_save_thing("sources", $sources);
     if (!result) {
         sb_set_error("There was an error deleting the source.");
+    }
+    return $result;
+}
+
+function sb_add_schedule($postdata) {
+    $schedule = array();
+    $data = sb_load();
+
+    if (!$postdata['name']) {
+        sb_set_error("You must supply a name.");
+    }
+    if (!$postdata['frequency']) {
+        sb_set_error("You must choose a frequency.");
+    }
+    if ($postdata['limit'] !== "" && intval($postdata['limit']) <= 0) {
+        sb_set_error("Backup count must be greated than 0, or blank.");
+    }
+    if (!array_key_exists($postdata['source'], $data['sources'])) {
+        sb_set_error("You must choose a valid source.");
+    }
+    if (!array_key_exists($postdata['destination'], $data['destinations'])) {
+        sb_set_error("You must choose a valid destination.");
+    }
+    $schedule['name'] = $postdata['name'];
+    $schedule['frequency'] = $postdata['frequency'];
+    $schedule['limit'] = intval($postdata['limit']);
+    $schedule['source'] = intval($postdata['source']);
+    $schedule['destination'] = intval($postdata['destination']);
+
+    if (sb_has_error()) {
+        return false;
+    }
+
+    $schedules = $data['schedules'];
+    $schedules[] = $schedule;
+    $result = sb_save_thing("schedules", $schedules);
+    if (!$result) {
+        sb_set_error("There was an error saving schedule data.");
+    }
+    return $result;
+}
+
+function sb_delete_schedule($id) {
+    $schedules = sb_load_thing("schedules");
+    unset($schedules[$id]);
+    $result = sb_save_thing("schedules", $schedules);
+    if (!result) {
+        sb_set_error("There was an error deleting the schedule.");
     }
     return $result;
 }
