@@ -6,8 +6,8 @@ function sb_render_header() {
         $submenu = $sb_config['submenu_actions'][$action];
     } else {
         $submenu = array();
-        foreach ($sb_config['submenu_actions'] as $action => $submenu_items) {
-            if (in_array($action, array_keys($submenu_items))) {
+        foreach ($sb_config['submenu_actions'] as $key => $submenu_items) {
+            if (array_key_exists($action, $submenu_items)) {
                 $submenu = $submenu_items;
                 break;
             }
@@ -25,7 +25,6 @@ function sb_render_header() {
 
 function sb_render_page($page) {
     $filename = SB_PAGESPATH . $page . ".php";
-    print "<!-- $filename -->";
     if (file_exists($filename)) {
         require $filename;
     } else {
