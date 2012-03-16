@@ -27,6 +27,7 @@ function sb_create_backup($source, $format, $exclude=Null) {
         $result = sb_create_targz($source, $exclude);
         break;
     default:
+        sb_set_error("Unsupported format.");
         $result = False;
         break;
     }
@@ -38,15 +39,15 @@ function sb_create_targz($source, $exclude=Null) {
     $tar = $sb_config['binaries']['tar'];
     $tempfile = sb_tempfile(sb_generate_name($source, ".tar.gz"));
 
-    $relative_source_path = str_replace(GSROOTPATH, './', $source['path']);
+    $source_path = $source['path'];
 
     $tar_options = " -czf $tempfile ";
     if ($exclude) {
         $exclude = rtrim($exclude, '/');
-        $tar_options .= " --exclude " . str_replace(GSROOTPATH, './', $exclude);
+        $tar_options .= " --exclude " . str_replace($source_path, './', $exclude);
     }
-    $tar_options .= " --exclude " . rtrim(str_replace(GSROOTPATH, './', SB_TEMPPATH), '/');
-    $command = "cd " . GSROOTPATH . " && $tar $tar_options $relative_source_path";
+    $tar_options .= " --exclude " . rtrim(str_replace($source_path, './', SB_TEMPPATH), '/');
+    $command = "cd " . $source_path . " && $tar $tar_options ./";
     error_log("exec - $command");
 
     $output = array();
@@ -54,7 +55,7 @@ function sb_create_targz($source, $exclude=Null) {
     exec($command, $output, $retval);
     if ($retval !== 0 && $retval !== 1) {
         @unlink($tempfile);
-        error_log("Retval was $retval, output: " . implode("\n", $output));
+        sb_set_error("There was an error creating the .tar.gz.");
         return False;
     } else {
         return $tempfile;
@@ -62,6 +63,7 @@ function sb_create_targz($source, $exclude=Null) {
 }
 
 function sb_create_zip($source, $exclude=Null) {
+    sb_set_error(".zip support not yet implemented.");
     return False;
 }
 
@@ -77,6 +79,7 @@ function sb_upload_backup($archive, $destination) {
         $result = sb_upload_s3($archive, $destination);
         break;
     default:
+        sb_set_error("Unsupported destination type.");
         $result = False;
         break;
     }
@@ -84,17 +87,23 @@ function sb_upload_backup($archive, $destination) {
 }
 
 function sb_upload_ftp($archive, $destination) {
+    sb_set_error("FTP support not yet implemented.");
     return False;
 }
 
 function sb_upload_s3($archive, $destination) {
+    sb_set_error("S3 support not yet implemented.");
     return False;
 }
 
 function sb_upload_local($archive, $destination) {
     $archive_name = basename($archive);
     sb_ensure_directory_exists($destination['path']);
-    return rename($archive, $destination['path'] . $archive_name);
+    if (!rename($archive, $destination['path'] . $archive_name)) {
+        sb_set_error("Unable to move backup to '".$destination['path']."'.");
+        return false;
+    }
+    return true;
 }
 
 function sb_clean_backups($source, $destination, $format, $limit) {
@@ -104,6 +113,7 @@ function sb_clean_backups($source, $destination, $format, $limit) {
         $result = sb_clean_local($destination, $match_pattern, $limit);
         break;
     default:
+        sb_set_error("Unsupported destination type.");
         $result = false;
         break;
     }
