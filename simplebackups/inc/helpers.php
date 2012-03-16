@@ -29,9 +29,7 @@ function sb_current_action() {
 
 function sb_tempfile($filename) {
     $path = SB_TEMPPATH;
-    if (!file_exists($path)) {
-        mkdir($path, 0777, True);
-    }
+    sb_ensure_directory_exists($path);
     $filename = $path . $filename;
     touch($filename);
     return $filename;
@@ -51,4 +49,42 @@ function sb_generate_pattern($source, $format) {
     $pattern .= str_replace('.', '\.', $format);
     $pattern .= "/";
     return $pattern;
+}
+
+function sb_set_error($message) {
+    global $sb_errors;
+    if (!isset($sb_errors)) {
+        $sb_errors = array();
+    }
+
+    $sb_errors[] = $message;
+}
+
+function sb_get_errors() {
+    global $sb_errors;
+    if (!isset($sb_errors)) {
+        $sb_errors = array();
+    }
+
+    $glue = "\n";
+    return implode($glue, $sb_errors);
+}
+
+function sb_has_error() {
+    global $sb_errors;
+    return (isset($sb_errors) && count($sb_errors) > 0);
+}
+
+function sb_ensure_directory_exists($path) {
+    if (!file_exists($path)) {
+        return mkdir($path, 0777, true);
+    }
+    return True;
+}
+
+function sb_path_trailing_slash($path) {
+    if ($path == "" || $path[strlen($path)-1] != '/') {
+        return $path . "/";
+    }
+    return $path;
 }

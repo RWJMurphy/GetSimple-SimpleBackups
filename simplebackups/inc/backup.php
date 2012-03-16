@@ -93,9 +93,7 @@ function sb_upload_s3($archive, $destination) {
 
 function sb_upload_local($archive, $destination) {
     $archive_name = basename($archive);
-    if (!file_exists($destination['path'])) { 
-        mkdir($destination['path'], 0777, True);
-    }
+    sb_ensure_directory_exists($destination['path']);
     return rename($archive, $destination['path'] . $archive_name);
 }
 

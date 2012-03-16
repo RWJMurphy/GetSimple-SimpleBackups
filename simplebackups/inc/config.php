@@ -19,19 +19,21 @@ $sb_config = array(
             "add_source" => "New source"
         ),
         "destinations" => array(
+            "destinations" => "List destinations",
             "add_destination" => "New destination"
         ),
         "schedules" => array(
+            "schedules" => "List schedules",
             "add_schedule" => "New schedule"
         )
     ),
     "default_action" => "run_backup",
     "xml" => array(
-        "sources" => GSDATAOTHERPATH . "scheduled_backups/sources.xml",
-        "destinations" => GSDATAOTHERPATH . "scheduled_backups/destinations.xml",
-        "schedules" => GSDATAOTHERPATH . "scheduled_backups/schedules.xml",
-        "archive_formats" => GSDATAOTHERPATH . "scheduled_backups/archive_formats.xml",
-        "last_run" => GSDATAOTHERPATH . "scheduled_backups/last_run.xml"
+        "sources" => SB_XMLPATH . "/sources.xml",
+        "destinations" => SB_XMLPATH . "/destinations.xml",
+        "schedules" => SB_XMLPATH . "/schedules.xml",
+        "archive_formats" => SB_XMLPATH . "/archive_formats.xml",
+        "last_run" => SB_XMLPATH . "/last_run.xml"
     ),
     "default_settings" => array(
         "sources" => array(

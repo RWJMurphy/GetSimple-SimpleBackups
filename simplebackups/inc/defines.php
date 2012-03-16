@@ -9,7 +9,10 @@ define('SB_DESCRIPTION', 'Configurable, schedulable backups');
 define('SB_TABNAME', SB_SHORTNAME);
 define('SB_ACTION_MAIN', 'sb_action_admin');
 
+define('SB_FTP_PORT_DEFAULT', 21);
+
 define('SB_ROOTPATH', GSPLUGINPATH . SB_SHORTNAME . "/");
 define('SB_PAGESPATH', SB_ROOTPATH . "pages/");
-define('SB_TEMPPATH', GSDATAOTHERPATH . SB_SHORTNAME . "temp/");
+define('SB_TEMPPATH', GSDATAOTHERPATH . SB_SHORTNAME . "/temp/");
+define('SB_XMLPATH', GSDATAOTHERPATH . SB_SHORTNAME . "/xml/");
 
