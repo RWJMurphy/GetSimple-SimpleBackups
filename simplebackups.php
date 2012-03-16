@@ -14,21 +14,21 @@ register_plugin(
 	SB_ACTION_MAIN
 );
 
-add_action('nav-tab','createNavTab',array(SB_TABNAME, SB_SHORTNAME, SB_NAME, 'run_backup'));
+add_action('nav-tab', 'createNavTab', array(SB_TABNAME, SB_SHORTNAME, SB_NAME, 'run_backup'));
 
 foreach ($sb_config['menu_actions'] as $action => $description) {
     add_action(SB_TABNAME . '-sidebar', 'createSideMenu', array(SB_SHORTNAME, $description, $action));
 }
 
-#add_action('index-posttemplate','sb_cron');
+#add_action('index-posttemplate', 'sb_action_cron');
 
-function sb_admin() {
+function sb_action_admin() {
     $sb_config = sb_config();
     sb_render_header();
     $selected_action = sb_current_action();
     sb_render_page($selected_action);
 }
 
-function sb_cron() {
+function sb_action_cron() {
     return;
 }
