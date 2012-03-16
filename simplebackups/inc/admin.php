@@ -2,7 +2,17 @@
 function sb_render_header() {
     $sb_config = sb_config();
     $action = sb_current_action();
-    $submenu = $sb_config['submenu_actions'][$action];
+    if (isset($sb_config['submenu_actions'][$action])) {
+        $submenu = $sb_config['submenu_actions'][$action];
+    } else {
+        $submenu = array();
+        foreach ($sb_config['submenu_actions'] as $action => $submenu_items) {
+            if (in_array($action, array_keys($submenu_items))) {
+                $submenu = $submenu_items;
+                break;
+            }
+        }
+    }
 ?>
     <h3 class="floated"><?php echo SB_NAME; ?></h3>
     <div class="edit-nav clearfix">

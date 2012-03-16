@@ -1,5 +1,11 @@
 <?php
 $sb_config = array(
+    "actions" => array(
+        "run_backup",
+        "sources", "add_source", "edit_source", "delete_source",
+        "destinations", "add_destination", "edit_destination", "delete_destination",
+        "schedules", "add_schedule", "edit_schedule", "delete_schedule"
+    ),
     "menu_actions" => array(
         "run_backup" => "Run Backup Now",
         "sources" => "Sources",
@@ -8,9 +14,16 @@ $sb_config = array(
     ),
     "submenu_actions" => array(
         "run_backup" => array(),
-        "sources" => array(),
-        "destinations" => array(),
-        "schedules" => array()
+        "sources" => array(
+            "sources" => "List sources",
+            "add_source" => "New source"
+        ),
+        "destinations" => array(
+            "add_destination" => "New destination"
+        ),
+        "schedules" => array(
+            "add_schedule" => "New schedule"
+        )
     ),
     "default_action" => "run_backup",
     "xml" => array(

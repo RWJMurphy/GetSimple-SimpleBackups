@@ -1,6 +1,7 @@
 <?php
 $data = sb_load();
 ?>
+<h2>Sources</h2>
 <table>
     <tbody>
         <tr>

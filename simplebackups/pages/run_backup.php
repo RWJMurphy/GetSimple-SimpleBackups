@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 $last = $data['last_run'];
 ?>
-    <form action="<?php echo sb_link("run_backup"); ?>" method="POST">
+<h2>Run Backup Now</h2>
+<form action="<?php echo sb_link("run_backup"); ?>" method="POST">
 Backup
 <select name="source">
     <option value="" disabled="disabled">Source</option>

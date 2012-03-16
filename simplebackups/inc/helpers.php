@@ -17,7 +17,7 @@ function sb_is_current_action($action) {
 function sb_current_action() {
     $sb_config = sb_config();
     $selected_action = Null;
-    foreach ($sb_config['menu_actions'] as $action => $description) {
+    foreach ($sb_config['actions'] as $action) {
         if (isset($_GET[$action])) {
             $selected_action = $action;
             break;
