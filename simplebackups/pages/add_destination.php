@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     redirect($url);
     exit;
 }
-queue_script('sb_edit', GSBACK); 
 ?>
 <h2>Add destination</h2>
 <form id="add" action="<?php echo sb_link("add_destination"); ?>" method="POST">
