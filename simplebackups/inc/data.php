@@ -102,6 +102,7 @@ function sb_add_destination($type, $postdata) {
         $destination['subject'] = $postdata['email_subject'];
         break;
     default:
+        sb_set_error("You must select a valid type.");
         break;
     }
 
@@ -111,7 +112,6 @@ function sb_add_destination($type, $postdata) {
 
     $destinations = sb_load_thing("destinations");
     $destinations[] = $destination;
-
 
     $result = sb_save_thing("destinations", $destinations);
     if (!$result) {
@@ -126,6 +126,49 @@ function sb_delete_destination($id) {
     $result = sb_save_thing("destinations", $destinations);
     if (!result) {
         sb_set_error("There was an error deleting the destination.");
+    }
+    return $result;
+}
+
+function sb_add_source($type, $postdata) {
+    $source = array();
+    if (!$postdata['name']) {
+        sb_set_error("You must supply a name.");
+    }
+    $source['name'] = $postdata['name'];
+    $source['type'] = $type;
+    switch($type) {
+    case "local":
+        if (!$postdata['local_path']) {
+            sb_set_error("You must supply a local path.");
+        }
+        $source['path'] = sb_path_trailing_slash($postdata['local_path']);
+        break;
+    default:
+        sb_set_error("You must select a valid type.");
+        break;
+    }
+
+    if (sb_has_error()) {
+        return false;
+    }
+
+    $sources = sb_load_thing("sources");
+    $sources[] = $source;
+
+    $result = sb_save_thing("sources", $sources);
+    if (!$result) {
+        sb_set_error("There was an error saving source data.");
+    }
+    return $result;
+}
+
+function sb_delete_source($id) {
+    $sources = sb_load_thing("sources");
+    unset($sources[$id]);
+    $result = sb_save_thing("sources", $sources);
+    if (!result) {
+        sb_set_error("There was an error deleting the source.");
     }
     return $result;
 }
