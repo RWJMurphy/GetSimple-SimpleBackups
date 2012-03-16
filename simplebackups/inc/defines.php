@@ -16,3 +16,6 @@ define('SB_PAGESPATH', SB_ROOTPATH . "pages/");
 define('SB_TEMPPATH', GSDATAOTHERPATH . SB_SHORTNAME . "/temp/");
 define('SB_XMLPATH', GSDATAOTHERPATH . SB_SHORTNAME . "/xml/");
 
+define('SB_PLUGINURL', $SITEURL.'plugins/'.SB_SHORTNAME.'/');
+define('SB_CSSURL', SB_PLUGINURL.'css/');
+define('SB_JSURL', SB_PLUGINURL.'js/');
