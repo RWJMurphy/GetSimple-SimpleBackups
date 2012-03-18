@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <p><label for="ftp_host">Host:</label><input class="text" name="ftp_host" value="<?php if (isset($_SESSION['add_destination']['ftp_host'])) { echo $_SESSION['add_destination']['ftp_host']; }?>" /></p>
     <p><label for="ftp_port">Port:</label><input class="text" name="ftp_port" value="<?php if (isset($_SESSION['add_destination']['ftp_port'])) { echo $_SESSION['add_destination']['ftp_port']; } else { echo SB_FTP_PORT_DEFAULT; } ?>" /></p>
     <p><label for="ftp_username">Username:</label><input class="text" name="ftp_username" value="<?php if (isset($_SESSION['add_destination']['ftp_username'])) { echo $_SESSION['add_destination']['ftp_username']; }?>" /></p>
-    <p><label for="ftp_password">Password:</label><input class="text" name="ftp_password" value="<?php if (isset($_SESSION['add_destination']['ftp_password'])) { echo $_SESSION['add_destination']['ftp_password']; }?>" /></p>
+    <p><label for="ftp_password">Password:</label><input type="password" class="text" name="ftp_password" value="<?php if (isset($_SESSION['add_destination']['ftp_password'])) { echo $_SESSION['add_destination']['ftp_password']; }?>" /></p>
     <p><label for="ftp_path">Remote Path:</label><input class="text" name="ftp_path" value="<?php if (isset($_SESSION['add_destination']['ftp_path'])) { echo $_SESSION['add_destination']['ftp_path']; } else { echo "/"; }?>" /></p>
 </fieldset>
 <fieldset class="type" id="fs_s3">
