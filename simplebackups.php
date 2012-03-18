@@ -28,6 +28,7 @@ queue_style('sb_main', GSBACK);
 add_action('index-posttemplate', 'sb_action_cron');
 
 function sb_action_admin() {
+    session_start();
 
     $sb_config = sb_config();
     sb_render_header();

@@ -1,5 +1,4 @@
 <?php
-session_start();
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $_SESSION['add_destination'] = $_POST;
     $result = sb_add_destination($_POST['type'], $_POST);
@@ -41,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <fieldset class="type" id="fs_s3">
     <p><label for="s3_bucker">Bucket:</label><input class="text" name="s3_bucket" value="<?php if (isset($_SESSION['add_destination']['s3_bucket'])) { echo $_SESSION['add_destination']['s3_bucket']; } ?>" /></p>
     <p><label for="s3_access_key_id">Access Key ID:</label><input class="text" name="s3_access_key_id" value="<?php if (isset($_SESSION['add_destination']['s3_access_key_id'])) { echo $_SESSION['add_destination']['s3_access_key_id']; } ?>" /></p>
-    <p><label for="s3_access_key_secret">Access Key Secret:</label><input class="text" name="s3_access_key_secret" value="<?php if (isset($_SESSION['add_destination']['s3_access_key_secret'])) { echo $_SESSION['add_destination']['s3_access_key_secret']; } ?>" /></p>
+    <p><label for="s3_access_key_secret">Secret Access Key:</label><input class="text" name="s3_access_key_secret" value="<?php if (isset($_SESSION['add_destination']['s3_access_key_secret'])) { echo $_SESSION['add_destination']['s3_access_key_secret']; } ?>" /></p>
     <p><label for="s3_path">Remote Path:</label><input class="text" name="s3_path" value="<?php if (isset($_SESSION['add_destination']['s3_path'])) { echo $_SESSION['add_destination']['s3_path']; } ?>" /></p>
 </fieldset>
 <fieldset class="type" id="fs_email">

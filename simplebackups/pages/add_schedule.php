@@ -1,5 +1,4 @@
 <?php
-session_start();
 $data = sb_load();
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $_SESSION['add_schedule'] = $_POST;

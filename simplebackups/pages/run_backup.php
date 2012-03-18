@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $message = "Backup successful!";
         $message_class = "success";
     } else {
-        $message = sb_get_error();
+        $message = sb_get_errors();
         $message_class = "error";
     }
     redirect(sb_link("run_backup") . "&$message_class=" . urlencode($message));

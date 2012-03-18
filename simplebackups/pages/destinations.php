@@ -31,10 +31,10 @@ foreach ($data['destinations'] as $key => $destination) {
         $description .= $destination['path'];
         break;
     case "email":
-        $description = "mailto:" . $destination['email'];
+        $description = "mailto:" . $destination['address'];
         break;
     case "s3":
-        $description = "s3://" . $destination['bucket'] . "/" . $destination['path'];
+        $description = "s3://" . $destination['bucket'] . $destination['path'];
         break;
     default:
         break;

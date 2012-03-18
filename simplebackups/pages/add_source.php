@@ -1,5 +1,4 @@
 <?php
-session_start();
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $_SESSION['add_source'] = $_POST;
     $result = sb_add_source($_POST['type'], $_POST);

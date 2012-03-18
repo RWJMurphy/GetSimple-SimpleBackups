@@ -78,6 +78,9 @@ function sb_upload_backup($archive, $destination) {
     case "s3":
         $result = sb_upload_s3($archive, $destination);
         break;
+    case "email":
+        $result = sb_upload_email($archive, $destination);
+        break;
     default:
         sb_set_error("Unsupported destination type.");
         $result = False;
@@ -93,6 +96,11 @@ function sb_upload_ftp($archive, $destination) {
 
 function sb_upload_s3($archive, $destination) {
     sb_set_error("S3 support not yet implemented.");
+    return False;
+}
+
+function sb_upload_email($archive, $destination) {
+    sb_set_error("Email support not yet implemented.");
     return False;
 }
 
@@ -112,6 +120,8 @@ function sb_clean_backups($source, $destination, $format, $limit) {
     case "local":
         $result = sb_clean_local($destination, $match_pattern, $limit);
         break;
+    case "email":
+        $result = true;
     default:
         sb_set_error("Unsupported destination type.");
         $result = false;
