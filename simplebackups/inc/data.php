@@ -1,7 +1,8 @@
 <?php
 function sb_load() {
     $data = array();
-    foreach (array("sources", "destinations", "schedules", "archive_formats", "last_run") as $thing) {
+    $sb_config = sb_config();
+    foreach (array_keys($sb_config['xml']) as $thing) {
         $data[$thing] = sb_load_thing($thing);
     }
     return $data;
@@ -23,7 +24,9 @@ function sb_load_thing($thing) {
             $data[(string)$thing_instance_xml['id']] = $thing_instance;
         }
     } else {
-        $data = $sb_config['default_settings'][$thing];
+        if (array_key_exists($thing, $sb_config['default_settings'])) {
+            $data = $sb_config['default_settings'][$thing];
+        }
     }
     return $data;
 }
@@ -125,7 +128,7 @@ function sb_delete_destination($id) {
     $destinations = sb_load_thing("destinations");
     unset($destinations[$id]);
     $result = sb_save_thing("destinations", $destinations);
-    if (!result) {
+    if (!$result) {
         sb_set_error("There was an error deleting the destination.");
     }
     return $result;
@@ -168,7 +171,7 @@ function sb_delete_source($id) {
     $sources = sb_load_thing("sources");
     unset($sources[$id]);
     $result = sb_save_thing("sources", $sources);
-    if (!result) {
+    if (!$result) {
         sb_set_error("There was an error deleting the source.");
     }
     return $result;
@@ -193,11 +196,15 @@ function sb_add_schedule($postdata) {
     if (!array_key_exists($postdata['destination'], $data['destinations'])) {
         sb_set_error("You must choose a valid destination.");
     }
+    if (!in_array($postdata['archive_format'], $data['archive_formats'])) {
+        sb_set_error("You must choose a valid archive_format.");
+    }
     $schedule['name'] = $postdata['name'];
     $schedule['frequency'] = $postdata['frequency'];
     $schedule['limit'] = intval($postdata['limit']);
     $schedule['source'] = intval($postdata['source']);
     $schedule['destination'] = intval($postdata['destination']);
+    $schedule['archive_format'] = $postdata['archive_format'];
 
     if (sb_has_error()) {
         return false;
@@ -216,8 +223,19 @@ function sb_delete_schedule($id) {
     $schedules = sb_load_thing("schedules");
     unset($schedules[$id]);
     $result = sb_save_thing("schedules", $schedules);
-    if (!result) {
+    if (!$result) {
         sb_set_error("There was an error deleting the schedule.");
+    }
+    return $result;
+}
+
+function sb_update_schedule($id, $schedule) {
+    $schedules = sb_load_thing("schedules");
+    $schedules[$id] = $schedule;
+    $result = sb_save_thing("schedules", $schedules);
+    if (!$result) {
+        sb_set_error("There was an error updating the schedule.");
+        sb_log_error("Error updating schedule '%s'", $schedule['name']);
     }
     return $result;
 }

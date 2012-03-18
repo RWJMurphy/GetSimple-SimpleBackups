@@ -17,7 +17,13 @@ $data = sb_load();
 foreach ($data['schedules'] as $key => $schedule) {
     $name = $schedule['name'];
     $frequency = $schedule['frequency'];
-    $last_run = isset($schedule['last_run']) ? $schedule['last_run'] : "never";
+    $last_run_time = isset($schedule['last_run_time']) ? date(SB_LOG_TIMEFORMAT, $schedule['last_run_time']) : "never";
+    $last_run_status = Null;
+    if (isset($schedule['last_run_status'])) {
+        $last_run_status = $schedule['last_run_status'] ? "success" : "failed";
+    }
+    $last_run = "$last_run_time: $last_run_status";
+
     $source = $data['sources'][$schedule['source']]['name'];
     $limit = $schedule['limit'];
     $destination = $data['destinations'][$schedule['destination']]['name'];

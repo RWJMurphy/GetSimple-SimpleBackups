@@ -1,7 +1,9 @@
 <?php
-require_once 'defines.php';
-require_once 'config.php';
-require_once 'data.php';
-require_once 'helpers.php';
-require_once 'admin.php';
-require_once 'backup.php';
+require_once __DIR__.'/defines.php';
+require_once __DIR__.'/config.php';
+require_once __DIR__.'/data.php';
+require_once __DIR__.'/helpers.php';
+require_once __DIR__.'/admin.php';
+require_once __DIR__.'/backup.php';
+require_once __DIR__.'/cron.php';
+require_once __DIR__.'/log.php';

@@ -25,7 +25,7 @@ register_style('sb_main', SB_CSSURL . 'sb_main.css', SB_VERSION, 'screen');
 queue_script('sb_edit', GSBACK);
 queue_style('sb_main', GSBACK);
 
-#add_action('index-posttemplate', 'sb_action_cron');
+add_action('index-posttemplate', 'sb_action_cron');
 
 function sb_action_admin() {
 
@@ -36,5 +36,5 @@ function sb_action_admin() {
 }
 
 function sb_action_cron() {
-    return;
+    sb_cron();
 }

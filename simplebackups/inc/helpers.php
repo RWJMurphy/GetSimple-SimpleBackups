@@ -88,3 +88,7 @@ function sb_path_trailing_slash($path) {
     }
     return $path;
 }
+
+function sb_remake_time($dt) {
+    return mktime($dt['hours'], $dt['minutes'], $dt['seconds'], $dt['mon'], $dt['mday'], $dt['year']);
+}

@@ -146,3 +146,21 @@ function sb_clean_local($destination, $match_pattern, $limit) {
     return $result;
 }
 
+
+function sb_run_scheduled_backup($schedule) {
+    sb_log_info("Running scheduled backup '%s'", $schedule['name']);
+    $data = sb_load();
+    $source = $data['sources'][$schedule['source']];
+    $destination = $data['destinations'][$schedule['destination']];
+    $format = $schedule['archive_format'];
+    $limit = $schedule['limit'];
+
+    $result = sb_run_backup($source, $destination, $format, $limit);
+
+    if (!$result) {
+        sb_log_error("Error running scheduled backup '%s': %s", array($schedule['name'], sb_get_error()));
+    } else {
+        sb_log_info("Scheduled backup '%s' run successfully.", $schedule['name']);
+    }
+    return $result;
+}

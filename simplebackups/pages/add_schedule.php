@@ -49,6 +49,12 @@ if (!isset($_SESSION['add_schedule']['frequency'])) {
     <option <?php if (isset($_SESSION['add_schedule']['destination']) && $_SESSION['add_schedule']['destination'] == $id) { echo 'selected="selected" '; } ?> value="<?php echo $id; ?>"><?php echo $destination['name']; ?></option>
 <?php } ?>
     </select></p>
+    <p><label for="archive_format">Archive format:</label><select class="text" name="archive_format">
+        <option disabled="disabled">Format</option>
+<?php foreach ($data['archive_formats'] as $format) { ?>
+    <option <?php if (isset($_SESSION['add_schedule']['archive_format']) && $_SESSION['add_schedule']['archive_format'] == $format) { echo 'selected="selected" '; } ?> value="<?php echo $format; ?>"><?php echo $format; ?></option>
+<?php } ?>
+    </select></p>
     <p><input class="submit" type="submit" value="Add" /></p>
 </form>
 <?php

@@ -1,3 +1,13 @@
+table.logs th.time {
+    width: 12em;
+}
+
+table.logs th.level {
+    width: 4em;
+}
+
+table.logs th.message { }
+
 fieldset.type {
     display: none;
     border: none;
