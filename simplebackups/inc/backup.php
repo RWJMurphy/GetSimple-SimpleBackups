@@ -27,7 +27,7 @@ function sb_create_backup($source, $format, $exclude=Null) {
         $result = sb_create_targz($source, $exclude);
         break;
     default:
-        sb_set_error("Unsupported format.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/UNSUPPORTED_ARCHIVE'), $format);
         $result = False;
         break;
     }
@@ -56,7 +56,7 @@ function sb_create_targz($source, $exclude=Null) {
     exec($command, $output, $retval);
     if ($retval !== 0 && $retval !== 1) {
         @unlink($tempfile);
-        sb_set_error("There was an error creating the .tar.gz.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_TARGZ'));
         return False;
     } else {
         return $tempfile;
@@ -64,7 +64,7 @@ function sb_create_targz($source, $exclude=Null) {
 }
 
 function sb_create_zip($source, $exclude=Null) {
-    sb_set_error(".zip support not yet implemented.");
+    sb_set_error(i18n_r(SB_SHORTNAME.'/NOT_IMPLEMENTED'), "zip archive");
     return False;
 }
 
@@ -83,7 +83,7 @@ function sb_upload_backup($archive, $destination) {
         $result = sb_upload_email($archive, $destination);
         break;
     default:
-        sb_set_error("Unsupported destination type.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/UNSUPPORTED_DESTINATION'), $destination['type']);
         $result = False;
         break;
     }
@@ -96,12 +96,12 @@ function sb_upload_backup($archive, $destination) {
 }
 
 function sb_upload_ftp($archive, $destination) {
-    sb_set_error("FTP support not yet implemented.");
+    sb_set_error(i18n_r(SB_SHORTNAME.'/NOT_IMPLEMENTED'), "FTP");
     return False;
 }
 
 function sb_upload_s3($archive, $destination) {
-    sb_set_error("S3 support not yet implemented.");
+    sb_set_error(i18n_r(SB_SHORTNAME.'/NOT_IMPLEMENTED'), "S3");
     return False;
 }
 
@@ -109,10 +109,11 @@ function sb_upload_email($archive, $destination) {
     $from = defined("GSFROMEMAIL") ? GSFROMEMAIL : "noreply@get-simple.info";
     $result = sb_send_email($from, $destination['address'], $destination['subject'], SB_EMAIL_BODY, $archive);
     if (!$result) {
-        sb_set_error("Error emailing '%s' to '%s'", array(basename($archive), $destination['name']));
-        sb_log_error("Error emailing '%s' to '%s'", array(basename($archive), $destination['name']));
+        $error = i18n_r(SB_SHORTNAME.'/ERROR_EMAIL');
+        sb_set_error($error, $array(basename($archive), $destination['name']));
+        sb_log_error($error, $array(basename($archive), $destination['name']));
     } else {
-        sb_log_info("Emailed '%s' to '%s'", array(basename($archive), $destination['name']));
+        sb_log_info(i18n_r(SB_SHORTNAME.'/SUCCESS_EMAIL'), array(basename($archive), $destination['name']));
     }
     return $result;
 }
@@ -121,7 +122,9 @@ function sb_upload_local($archive, $destination) {
     $archive_name = basename($archive);
     sb_ensure_directory_exists($destination['path']);
     if (!rename($archive, $destination['path'] . $archive_name)) {
-        sb_set_error("Unable to move backup to '".$destination['path']."'.");
+        $error = i18n_r(SB_SHORTNAME.'/ERROR_FILEMOVE');
+        sb_log_error($error, $destination['path']);
+        sb_set_error($error, $destination['path']);
         return false;
     }
     return true;
@@ -137,7 +140,7 @@ function sb_clean_backups($source, $destination, $format, $limit) {
         $result = true;
         break;
     default:
-        sb_set_error("Unsupported destination type.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/UNSUPPORTED_DESTINATION'), $destination['type']);
         $result = false;
         break;
     }
@@ -172,7 +175,7 @@ function sb_clean_local($destination, $match_pattern, $limit) {
 
 
 function sb_run_scheduled_backup($schedule) {
-    sb_log_info("Running scheduled backup '%s'", $schedule['name']);
+    sb_log_info(i18n_r(SB_SHORTNAME.'/RUNNING_SCHEDULED'), $schedule['name']);
     $data = sb_load();
     $source = $data['sources'][$schedule['source']];
     $destination = $data['destinations'][$schedule['destination']];
@@ -182,9 +185,9 @@ function sb_run_scheduled_backup($schedule) {
     $result = sb_run_backup($source, $destination, $format, $limit);
 
     if (!$result) {
-        sb_log_error("Error running scheduled backup '%s': %s", array($schedule['name'], sb_get_error()));
+        sb_log_error(i18n_r(SB_SHORTNAME.'/ERROR_SCHEDULE'), array($schedule['name'], sb_get_error()));
     } else {
-        sb_log_info("Scheduled backup '%s' run successfully.", $schedule['name']);
+        sb_log_info(i18n_r(SB_SHORTNAME.'/SUCCESS_SCHEDULE'), $schedule['name']);
     }
     return $result;
 }

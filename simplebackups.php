@@ -14,10 +14,13 @@ register_plugin(
 	SB_ACTION_MAIN
 );
 
+i18n_merge(SB_SHORTNAME) || i18n_merge(SB_SHORTNAME, 'en_US');
+
 add_action('nav-tab', 'createNavTab', array(SB_TABNAME, SB_SHORTNAME, SB_NAME, 'run_backup'));
 foreach ($sb_config['menu_actions'] as $action => $description) {
     add_action(SB_TABNAME . '-sidebar', 'createSideMenu', array(SB_SHORTNAME, $description, $action));
 }
+add_action('index-posttemplate', 'sb_action_cron');
 
 register_script('sb_edit', SB_JSURL . 'sb_edit.js', SB_VERSION, False);
 register_style('sb_main', SB_CSSURL . 'sb_main.css', SB_VERSION, 'screen');
@@ -25,7 +28,6 @@ register_style('sb_main', SB_CSSURL . 'sb_main.css', SB_VERSION, 'screen');
 queue_script('sb_edit', GSBACK);
 queue_style('sb_main', GSBACK);
 
-add_action('index-posttemplate', 'sb_action_cron');
 
 function sb_action_admin() {
     session_start();

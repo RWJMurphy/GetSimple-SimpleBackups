@@ -51,10 +51,16 @@ function sb_generate_pattern($source, $format) {
     return $pattern;
 }
 
-function sb_set_error($message) {
+function sb_set_error($message, $args=Null) {
     global $sb_errors;
     if (!isset($sb_errors)) {
         $sb_errors = array();
+    }
+
+    if (is_array($args)) {
+        $message = vsprintf($message, $args);
+    } elseif ($args != Null) {
+        $message = printf($message, $args);
     }
 
     $sb_errors[] = $message;
