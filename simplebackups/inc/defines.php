@@ -15,6 +15,7 @@ define('SB_ROOTPATH', GSPLUGINPATH . SB_SHORTNAME . "/");
 define('SB_PAGESPATH', SB_ROOTPATH . "pages/");
 define('SB_TEMPPATH', GSDATAOTHERPATH . SB_SHORTNAME . "/temp/");
 define('SB_XMLPATH', GSDATAOTHERPATH . SB_SHORTNAME . "/xml/");
+define('SB_BACKUPPATH', GSBACKUPSPATH . "simplebackups/");
 
 define('SB_PLUGINURL', $SITEURL.'plugins/'.SB_SHORTNAME.'/');
 define('SB_CSSURL', SB_PLUGINURL.'css/');
@@ -26,3 +27,5 @@ define('SB_LOG_INFO', 1);
 define('SB_LOG_WARNING', 2);
 define('SB_LOG_ERROR', 3);
 define('SB_LOG_CRITICAL', 4);
+
+define('SB_EMAIL_BODY', "New backup attached.");

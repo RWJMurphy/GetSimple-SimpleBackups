@@ -46,6 +46,7 @@ function sb_create_targz($source, $exclude=Null) {
         $exclude = rtrim($exclude, '/');
         $tar_options .= " --exclude " . str_replace($source_path, './', $exclude);
     }
+    $tar_options .= " --exclude " . rtrim(str_replace($source_path, './', SB_BACKUPPATH), '/');
     $tar_options .= " --exclude " . rtrim(str_replace($source_path, './', SB_TEMPPATH), '/');
     $command = "cd " . $source_path . " && $tar $tar_options ./";
     error_log("exec - $command");
@@ -86,6 +87,11 @@ function sb_upload_backup($archive, $destination) {
         $result = False;
         break;
     }
+    if (!$result) {
+        if (file_exists($archive)) {
+            unlink($archive);
+        }
+    }
     return $result;    
 }
 
@@ -100,8 +106,15 @@ function sb_upload_s3($archive, $destination) {
 }
 
 function sb_upload_email($archive, $destination) {
-    sb_set_error("Email support not yet implemented.");
-    return False;
+    $from = defined("GSFROMEMAIL") ? GSFROMEMAIL : "noreply@get-simple.info";
+    $result = sb_send_email($from, $destination['address'], $destination['subject'], SB_EMAIL_BODY, $archive);
+    if (!$result) {
+        sb_set_error("Error emailing '%s' to '%s'", array(basename($archive), $destination['name']));
+        sb_log_error("Error emailing '%s' to '%s'", array(basename($archive), $destination['name']));
+    } else {
+        sb_log_info("Emailed '%s' to '%s'", array(basename($archive), $destination['name']));
+    }
+    return $result;
 }
 
 function sb_upload_local($archive, $destination) {
@@ -122,6 +135,7 @@ function sb_clean_backups($source, $destination, $format, $limit) {
         break;
     case "email":
         $result = true;
+        break;
     default:
         sb_set_error("Unsupported destination type.");
         $result = false;

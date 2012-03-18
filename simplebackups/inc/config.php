@@ -58,7 +58,7 @@ $sb_config = array(
             array(
                 "name" => "Local backups folder",
                 "type" => "local",
-                "path" => GSBACKUPSPATH . "simplebackups/"
+                "path" => SB_BACKUPPATH
             )
         ),
         "schedules" => array(),
