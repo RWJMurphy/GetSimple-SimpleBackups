@@ -33,6 +33,9 @@ function sb_create_backup($source, $format, $exclude=Null) {
     case ".tar.gz":
         $result = sb_create_targz($source, $exclude);
         break;
+    case ".zip":
+        $result = sb_create_zip($source, $exclude);
+        break;
     default:
         sb_set_error(i18n_r(SB_SHORTNAME.'/UNSUPPORTED_ARCHIVE'), $format);
         $result = False;

@@ -101,3 +101,10 @@ function sb_path_trailing_slash($path) {
 function sb_remake_time($dt) {
     return mktime($dt['hours'], $dt['minutes'], $dt['seconds'], $dt['mon'], $dt['mday'], $dt['year']);
 }
+
+function sb_executable_exists($executable) {
+    $output = array();
+    $retval = 0;
+    exec("which $executable", $outout, $retval);
+    return ($retval === 0);
+}

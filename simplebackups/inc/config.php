@@ -74,7 +74,8 @@ $sb_config = array(
         )
     ),
     "binaries" => array(
-        "tar" => "tar"
+        "tar" => "tar",
+        "zip" => "zip",
     ),
     "schedule_frequencies" => array(
         "hourly" => i18n_r(SB_SHORTNAME.'/SCHEDULE_HOURLY'),

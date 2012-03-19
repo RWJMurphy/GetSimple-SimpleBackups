@@ -12,6 +12,7 @@ $i18n = array(
     'ERROR_MOVEFILE' => "There was an error moving the archive to '%s'.",
     'ERROR_SCHEDULE' => "Error running scheduled backup '%s': %s",
     'ERROR_TARGZ' => "There was an error creating the .tar.gz archive.",
+    'ERROR_ZIP' => "There was an error creating the .zip archive.",
 
     'ERROR_VALID_NAME' => "You must supply a name.",
     'ERROR_VALID_TYPE' => "You must select a valid type.",
@@ -40,6 +41,9 @@ $i18n = array(
     'ERROR_DELETING_DESTINATION' => "There was an error deleting the destination.",
     'ERROR_DELETING_LOG' => "There was an error deleting the log.",
     'ERROR_DELETING_LOGS' => "There was an error deleting logs.",
+
+    'ERROR_TAR_NOT_FOUND' => "Could not find the `tar' program - cannot create .tar.gz archives",
+    'ERROR_ZIP_NOT_FOUND' => "Could not find the `zip' program - cannot create .zip archives",
 
     'SUCCESS_EMAIL' => "Emailed '%s' to '%s'.",
     'SUCCESS_SCHEDULE' => "Scheduled backup '%s' run successfully.",
