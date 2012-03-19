@@ -141,5 +141,8 @@ $i18n = array(
     'EDIT_SOURCE' => "Edit source",
     'DELETE_SOURCE' => "Delete source",
 
-    
+    /* FTP Errors */
+    'FTP_CONNECT_FAILED' => "Connecting to FTP server '%s' failed.",
+    'FTP_LOGIN_FAILED' => "Logging in to FTP server '%s' failed.",
+    'FTP_CHDIR_FAILED' => "Changing directory on FTP server '%s' failed.",
 );

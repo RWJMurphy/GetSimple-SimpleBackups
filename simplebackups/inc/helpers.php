@@ -60,20 +60,23 @@ function sb_set_error($message, $args=Null) {
     if (is_array($args)) {
         $message = vsprintf($message, $args);
     } elseif ($args != Null) {
-        $message = printf($message, $args);
+        $message = sprintf($message, $args);
     }
 
     $sb_errors[] = $message;
 }
 
-function sb_get_errors() {
+function sb_get_errors($implode=true) {
     global $sb_errors;
     if (!isset($sb_errors)) {
         $sb_errors = array();
     }
 
-    $glue = "\n";
-    return implode($glue, $sb_errors);
+    if($implode) {
+        return implode($sb_errors);
+    } else {
+        return $sb_errors;
+    }
 }
 
 function sb_has_error() {

@@ -23,11 +23,13 @@ function sb_add_destination($type, $postdata) {
         } elseif ($postdata['ftp_port'] <= 0 || $postdata['ftp_port'] > 65535) {
             sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_FTP_PORT'));
         }
+
         $destination['host'] = $postdata['ftp_host'];
         $destination['username'] = $postdata['ftp_username'];
         $destination['password'] = $postdata['ftp_password'];
         $destination['port'] = $postdata['ftp_port'];
         $destination['path'] = sb_path_trailing_slash($postdata['ftp_path']);
+        sb_validate_ftp($destination);
         break;
     case "s3":
         if (!$postdata['s3_bucket']) {
