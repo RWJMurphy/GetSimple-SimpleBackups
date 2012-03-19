@@ -95,6 +95,7 @@ $i18n = array(
     'EMAIL_SUBJECT' => "Subject",
     'ADD_DESTINATION' => "Add Destination",
     'ADD_SCHEDULE' => "Add Schedule",
+    'ADD_SOURCE' => "Add Source",
     'FREQUENCY' => "Frequency",
     'BACKUP_LIMIT' => "# Backups to keep",
     'SOURCE' => "Source",
