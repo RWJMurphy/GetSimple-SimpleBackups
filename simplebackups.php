@@ -11,8 +11,8 @@ register_plugin(
     SB_AUTHOR,
     SB_URL,
     SB_DESCRIPTION,
-	SB_TABNAME,
-	SB_ACTION_MAIN
+    SB_TABNAME,
+    SB_ACTION_MAIN
 );
 
 add_action('nav-tab', 'createNavTab', array(SB_TABNAME, SB_SHORTNAME, SB_NAME, 'run_backup'));
