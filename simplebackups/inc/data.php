@@ -53,25 +53,25 @@ function sb_save_thing($thing, $data) {
 function sb_add_destination($type, $postdata) {
     $destination = array();
     if (!$postdata['name']) {
-        sb_set_error("You must supply a name.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_NAME'));
     }
     $destination['name'] = $postdata['name'];
     $destination['type'] = $type;
     switch($type) {
     case "local":
         if (!$postdata['local_path']) {
-            sb_set_error("You must supply a local path.");
+            sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_LOCAL_PATH'));
         }
         $destination['path'] = sb_path_trailing_slash($postdata['local_path']);
         break;
     case "ftp":
         if (!$postdata['ftp_host']) {
-            sb_set_error("You must supply a hostname for the FTP server.");
+            sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_FTP_HOSTNAME'));
         }
         if (!$postdata['ftp_port']) {
             $postdata['ftp_port'] = SB_FTP_PORT_DEFAULT;
         } elseif ($postdata['ftp_port'] <= 0 || $postdata['ftp_port'] > 65535) {
-            sb_set_error("Invalid FTP port.");
+            sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_FTP_PORT'));
         }
         $destination['host'] = $postdata['ftp_host'];
         $destination['username'] = $postdata['ftp_username'];
@@ -81,13 +81,13 @@ function sb_add_destination($type, $postdata) {
         break;
     case "s3":
         if (!$postdata['s3_bucket']) {
-            sb_set_error("You must supply a bucket name.");
+            sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_S3_BUCKET'));
         }
         if (!$postdata['s3_access_key_id']) {
-            sb_set_error("You must supply an Access Key ID.");
+            sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_S3_KEY'));
         }
         if (!$postdata['s3_access_key_secret']) {
-            sb_set_error("You must supply an Access Key Secret.");
+            sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_S3_SECRET'));
         }
 
         $destination['bucket'] = $postdata['s3_bucket'];
@@ -97,16 +97,16 @@ function sb_add_destination($type, $postdata) {
         break;
     case "email":
         if (!$postdata['email_address']) {
-            sb_set_error("You must supply an email address.");
+            sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_EMAIL_ADDRESS'));
         }
         if (!$postdata['email_subject']) {
-            sb_set_error("You must supply a subject line.");
+            sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_EMAIL_SUBJECT'));
         }
         $destination['address'] = $postdata['email_address'];
         $destination['subject'] = $postdata['email_subject'];
         break;
     default:
-        sb_set_error("You must select a valid type.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_TYPE'));
         break;
     }
 
@@ -119,7 +119,7 @@ function sb_add_destination($type, $postdata) {
 
     $result = sb_save_thing("destinations", $destinations);
     if (!$result) {
-        sb_set_error("There was an error saving destination data.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_SAVING_DESTINATION'));
     }
     return $result;
 }
@@ -129,7 +129,7 @@ function sb_delete_destination($id) {
     unset($destinations[$id]);
     $result = sb_save_thing("destinations", $destinations);
     if (!$result) {
-        sb_set_error("There was an error deleting the destination.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_DELETING_DESTINATION'));
     }
     return $result;
 }
@@ -137,19 +137,19 @@ function sb_delete_destination($id) {
 function sb_add_source($type, $postdata) {
     $source = array();
     if (!$postdata['name']) {
-        sb_set_error("You must supply a name.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_NAME'));
     }
     $source['name'] = $postdata['name'];
     $source['type'] = $type;
     switch($type) {
     case "local":
         if (!$postdata['local_path']) {
-            sb_set_error("You must supply a local path.");
+            sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_LOCAL_PATH'));
         }
         $source['path'] = sb_path_trailing_slash($postdata['local_path']);
         break;
     default:
-        sb_set_error("You must select a valid type.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_TYPE'));
         break;
     }
 
@@ -162,7 +162,7 @@ function sb_add_source($type, $postdata) {
 
     $result = sb_save_thing("sources", $sources);
     if (!$result) {
-        sb_set_error("There was an error saving source data.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_SAVING_SOURCE'));
     }
     return $result;
 }
@@ -172,7 +172,7 @@ function sb_delete_source($id) {
     unset($sources[$id]);
     $result = sb_save_thing("sources", $sources);
     if (!$result) {
-        sb_set_error("There was an error deleting the source.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_DELETING_SOURCE'));
     }
     return $result;
 }
@@ -182,22 +182,22 @@ function sb_add_schedule($postdata) {
     $data = sb_load();
 
     if (!$postdata['name']) {
-        sb_set_error("You must supply a name.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_NAME'));
     }
     if (!$postdata['frequency']) {
-        sb_set_error("You must choose a frequency.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_FREQUENCY'));
     }
     if ($postdata['limit'] !== "" && intval($postdata['limit']) <= 0) {
-        sb_set_error("Backup count must be greated than 0, or blank.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_LIMIT'));
     }
     if (!array_key_exists($postdata['source'], $data['sources'])) {
-        sb_set_error("You must choose a valid source.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_SOURCE'));
     }
     if (!array_key_exists($postdata['destination'], $data['destinations'])) {
-        sb_set_error("You must choose a valid destination.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_DESTINATION'));
     }
     if (!in_array($postdata['archive_format'], $data['archive_formats'])) {
-        sb_set_error("You must choose a valid archive_format.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_ARCHIVE_FORMAT'));
     }
     $schedule['name'] = $postdata['name'];
     $schedule['frequency'] = $postdata['frequency'];
@@ -214,7 +214,7 @@ function sb_add_schedule($postdata) {
     $schedules[] = $schedule;
     $result = sb_save_thing("schedules", $schedules);
     if (!$result) {
-        sb_set_error("There was an error saving schedule data.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_SAVING_SCHEDULE'));
     }
     return $result;
 }
@@ -224,7 +224,7 @@ function sb_delete_schedule($id) {
     unset($schedules[$id]);
     $result = sb_save_thing("schedules", $schedules);
     if (!$result) {
-        sb_set_error("There was an error deleting the schedule.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_DELETING_SCHEDULE'));
     }
     return $result;
 }
@@ -234,8 +234,9 @@ function sb_update_schedule($id, $schedule) {
     $schedules[$id] = $schedule;
     $result = sb_save_thing("schedules", $schedules);
     if (!$result) {
-        sb_set_error("There was an error updating the schedule.");
-        sb_log_error("Error updating schedule '%s'", $schedule['name']);
+        $error = i18n_r(SB_SHORTNAME.'/ERROR_UPDATING_SCHEDULE');
+        sb_set_error($error, $schedule['name']);
+        sb_log_error($error, $schedule['name']);
     }
     return $result;
 }
