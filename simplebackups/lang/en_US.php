@@ -96,4 +96,8 @@ $i18n = array(
     'ADD_DESTINATION' => "Add Destination",
     'ADD_SCHEDULE' => "Add Schedule",
     'FREQUENCY' => "Frequency",
+    'BACKUP_LIMIT' => "# Backups to keep",
+    'SOURCE' => "Source",
+    'DESTINATION' => "Destination",
+    'ARCHIVE_FORMAT' => "Archive Format",
 );

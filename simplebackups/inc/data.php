@@ -180,11 +180,12 @@ function sb_delete_source($id) {
 function sb_add_schedule($postdata) {
     $schedule = array();
     $data = sb_load();
+    $sb_config = sb_config();
 
     if (!$postdata['name']) {
         sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_NAME'));
     }
-    if (!$postdata['frequency']) {
+    if (!array_key_exists($postdata['frequency'], $sb_config['schedule_frequencies'])) {
         sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_FREQUENCY'));
     }
     if ($postdata['limit'] !== "" && intval($postdata['limit']) <= 0) {

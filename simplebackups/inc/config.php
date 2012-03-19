@@ -77,10 +77,10 @@ $sb_config = array(
         "tar" => "tar"
     ),
     "schedule_frequencies" => array(
-        i18n_r(SB_SHORTNAME.'/SCHEDULE_HOURLY'),
-        i18n_r(SB_SHORTNAME.'/SCHEDULE_DAILY'),
-        i18n_r(SB_SHORTNAME.'/SCHEDULE_WEEKLY'),
-        i18n_r(SB_SHORTNAME.'/SCHEDULE_MONTHLY')
+        "hourly" => i18n_r(SB_SHORTNAME.'/SCHEDULE_HOURLY'),
+        "daily" => i18n_r(SB_SHORTNAME.'/SCHEDULE_DAILY'),
+        "weekly" => i18n_r(SB_SHORTNAME.'/SCHEDULE_WEEKLY'),
+        "monthly" => i18n_r(SB_SHORTNAME.'/SCHEDULE_MONTHLY')
     )
 );
 
