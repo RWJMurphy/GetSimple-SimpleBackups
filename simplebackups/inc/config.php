@@ -17,19 +17,19 @@ $sb_config = array(
     "submenu_actions" => array(
         "run_backup" => array(),
         "sources" => array(
-            "sources" => "List sources",
-            "add_source" => "New source"
+            "sources" => i18n_r(SB_SHORTNAME.'/LIST_SOURCES'),
+            "add_source" => i18n_r(SB_SHORTNAME.'/NEW_SOURCE')
         ),
         "destinations" => array(
-            "destinations" => "List destinations",
-            "add_destination" => "New destination"
+            "destinations" => i18n_r(SB_SHORTNAME.'/LIST_DESTINATIONS'),
+            "add_destination" => i18n_r(SB_SHORTNAME.'/NEW_DESTINATION')
         ),
         "schedules" => array(
-            "schedules" => "List schedules",
-            "add_schedule" => "New schedule"
+            "schedules" => i18n_r(SB_SHORTNAME.'/LIST_SCHEDULES'),
+            "add_schedule" => i18n_r(SB_SHORTNAME.'/NEW_SCHEDULE')
         ),
         "logs" => array(
-            "delete_all_logs" => "Delete all logs"
+            "delete_all_logs" => i18n_r(SB_SHORTNAME.'/DELETE_ALL_LOGS')
         )
     ),
     "default_action" => "run_backup",
@@ -44,19 +44,19 @@ $sb_config = array(
     "default_settings" => array(
         "sources" => array(
             array(
-                "name" => "All files",
+                "name" => i18n_r(SB_SHORTNAME.'/ALL_FILES'),
                 "type" => "local",
                 "path" => GSROOTPATH
             ),
             array(
-                "name" => "Data files",
+                "name" => i18n_r(SB_SHORTNAME.'/DATA_FILES'),
                 "type" => "local",
                 "path" => GSDATAPATH
             )
         ),
         "destinations" => array(
             array(
-                "name" => "Local backups folder",
+                "name" => i18n_r(SB_SHORTNAME.'/LOCAL_BACKUPS'),
                 "type" => "local",
                 "path" => SB_BACKUPPATH
             )
@@ -77,10 +77,10 @@ $sb_config = array(
         "tar" => "tar"
     ),
     "schedule_frequencies" => array(
-        "hourly",
-        "daily",
-        "weekly",
-        "monthly"
+        i18n_r(SB_SHORTNAME.'/SCHEDULE_HOURLY'),
+        i18n_r(SB_SHORTNAME.'/SCHEDULE_DAILY'),
+        i18n_r(SB_SHORTNAME.'/SCHEDULE_WEEKLY'),
+        i18n_r(SB_SHORTNAME.'/SCHEDULE_MONTHLY')
     )
 );
 

@@ -1,5 +1,6 @@
 <?php
 $thisfile=basename(__FILE__, ".php");
+i18n_merge($thisfile) || i18n_merge($thisfile, 'en_US');
 require_once $thisfile . "/inc/include.php";
 $sb_config = sb_config();
 
@@ -13,8 +14,6 @@ register_plugin(
 	SB_TABNAME,
 	SB_ACTION_MAIN
 );
-
-i18n_merge(SB_SHORTNAME) || i18n_merge(SB_SHORTNAME, 'en_US');
 
 add_action('nav-tab', 'createNavTab', array(SB_TABNAME, SB_SHORTNAME, SB_NAME, 'run_backup'));
 foreach ($sb_config['menu_actions'] as $action => $description) {

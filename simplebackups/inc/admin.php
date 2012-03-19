@@ -28,10 +28,10 @@ function sb_render_page($page) {
     if (file_exists($filename)) {
         require $filename;
     } else {
-        sb_render_not_implemented();
+        sb_render_not_implemented($page);
     }
 }
 
-function sb_render_not_implemented() {
-    echo '<h4>Not yet implemented.</h4>';
+function sb_render_not_implemented($page) {
+    echo '<h4>'.sprintf(i18n_r(SB_SHORTNAME.'/NOT_IMPLEMENTED'), $page).'</h4>';
 }

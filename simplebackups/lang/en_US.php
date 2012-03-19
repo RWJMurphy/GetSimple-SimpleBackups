@@ -13,5 +13,27 @@ $i18n = array(
 
     'RUNNING_SCHEDULED' => "Running scheduled backup '%s'.",
 
-    'NOT_IMPLEMENTED' => "%s support not implemented."
+    'NOT_IMPLEMENTED' => "%s support not implemented.",
+
+/* Menu Items */
+    'LIST_SOURCES' => "List Sources",
+    'NEW_SOURCE' => "New Source",
+    'LIST_DESTINATIONS' => "List Destinations",
+    'NEW_DESTINATION' => "New Destination",
+    'LIST_SCHEDULES' => "List Schedules",
+    'NEW_SCHEDULE' => "New Schedule",
+    'DELETE_ALL_LOGS' => "Delete all logs",
+
+/* Deafult Source & Destinations */
+    'ALL_FILES' => "All files",
+    'DATA_FILES' => "Data files",
+    'LOCAL_BACKUPS' => "Local backups folder",
+
+/* Schedule types / names */
+    'SCHEDULE_HOURLY' => "hourly",
+    'SCHEDULE_DAILY' => "daily",
+    'SCHEDULE_WEEKLY' => "weekly",
+    'SCHEDULE_MONTHLY' => "monthly",
+
+
 );
