@@ -46,6 +46,7 @@ function sb_add_destination($type, $postdata) {
         $destination['access_key_id'] = $postdata['s3_access_key_id'];
         $destination['access_key_secret'] = $postdata['s3_access_key_secret'];
         $destination['path'] = sb_path_trailing_slash($postdata['s3_path']);
+        sb_validate_s3($destination);
         break;
     case "email":
         if (!$postdata['email_address']) {

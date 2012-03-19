@@ -145,4 +145,7 @@ $i18n = array(
     'FTP_CONNECT_FAILED' => "Connecting to FTP server '%s' failed.",
     'FTP_LOGIN_FAILED' => "Logging in to FTP server '%s' failed.",
     'FTP_CHDIR_FAILED' => "Changing directory on FTP server '%s' failed.",
+
+    /* S3 Errors */
+    'S3_CONNECT_FAILED' => "Connecting to S3 bucket '%s' failed - %s",
 );

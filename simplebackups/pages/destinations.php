@@ -28,13 +28,13 @@ foreach ($data['destinations'] as $key => $destination) {
         if ($destination['port'] != SB_FTP_PORT_DEFAULT) {
             $description .= ":" . $destination['port'];
         }
-        $description .= $destination['path'];
+        $description .= "/" . $destination['path'];
         break;
     case "email":
         $description = "mailto:" . $destination['address'];
         break;
     case "s3":
-        $description = "s3://" . $destination['bucket'] . $destination['path'];
+        $description = "s3://" . $destination['bucket'] . "/" . $destination['path'];
         break;
     default:
         break;
