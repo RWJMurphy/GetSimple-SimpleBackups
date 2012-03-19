@@ -48,6 +48,12 @@ $i18n = array(
     'SUCCESS_ADD_SCHEDULE' => "New schedule added!",
     'SUCCESS_ADD_SOURCE' => "New source added!",
 
+    'SUCCESS_DELETE_ALL_LOGS' => "All logs deleted!",
+    'SUCCESS_DELETE_LOG' => "Log deleted!",
+    'SUCCESS_DELETE_SCHEDULE' => "Schedule deleted!",
+    'SUCCESS_DELETE_SOURCE' => "Source deleted!",
+    'SUCCESS_DELETE_DESTINATION' => "Destination deleted!",
+
     'RUNNING_SCHEDULED' => "Running scheduled backup '%s'.",
 
     'NOT_IMPLEMENTED' => "%s support not implemented.",

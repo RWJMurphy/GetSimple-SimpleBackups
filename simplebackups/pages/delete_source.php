@@ -7,7 +7,7 @@ if (!$result) {
     $message = sb_get_errors();
 } else {
     $message_class = "success";
-    $message = "Source deleted!";
+    $message = i18n_r(SB_SHORTNAME.'/SUCCESS_DELETE_SOURCE');
 }
 redirect(sb_link($redirect) . "&$message_class=" . urlencode($message));
 exit;

@@ -6,7 +6,7 @@ if (!$result) {
     $message = sb_get_errors();
 } else {
     $message_class = "success";
-    $message = "All logs deleted!";
+    $message = i18n_r(SB_SHORTNAME.'/SUCCESS_DELETE_ALL_LOGS');
 }
 redirect(sb_link($redirect) . "&$message_class=" . urlencode($message));
 exit;
