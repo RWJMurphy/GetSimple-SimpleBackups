@@ -1,10 +1,10 @@
-<h2>Logs</h2>
+<h2><?php i18n(SB_SHORTNAME.'/LOGS'); ?></h2>
 <table class="logs">
     <tbody>
         <tr>
-            <th class="time">Time</th>
-            <th class="level">Level</th>
-            <th class="message">Message</th>
+            <th class="time"><?php i18n(SB_SHORTNAME.'/TIMESTAMP'); ?></th>
+            <th class="level"><?php i18n(SB_SHORTNAME.'/LEVEL'); ?></th>
+            <th class="message"><?php i18n(SB_SHORTNAME.'/MESSAGE'); ?></th>
             <th></th>
         </tr>
 <?php
@@ -14,22 +14,22 @@ foreach ($logs as $key => $log) {
     $message = $log['message'];
     switch($log['level']) {
     case(SB_LOG_DEBUG):
-        $level = "debug";
+        $level = i18n_r(SB_SHORTNAME.'/LOG_DEBUG');
         break;
     case(SB_LOG_INFO):
-        $level = "info";
+        $level = i18n_r(SB_SHORTNAME.'/LOG_INFO');
         break;
     case(SB_LOG_WARNING):
-        $level = "warning";
+        $level = i18n_r(SB_SHORTNAME.'/LOG_WARNING');
         break;
     case(SB_LOG_ERROR):
-        $level = "error";
+        $level = i18n_r(SB_SHORTNAME.'/LOG_ERROR');
         break;
     case(SB_LOG_CRITICAL):
-        $level = "critical";
+        $level = i18n_r(SB_SHORTNAME.'/LOG_CRITICAL');
         break;
     default:
-        $level = "???";
+        $level = i18n_r(SB_SHORTNAME.'/LOG_UNKNOWN');
         break;
     }
 ?>
@@ -37,7 +37,7 @@ foreach ($logs as $key => $log) {
             <td class="posttitle"><?php echo $timestamp; ?></td>
             <td><?php echo $level; ?></td>
             <td><?php echo $message; ?></td>
-            <td class="delete"><a class="delconfirm" href="<?php echo sb_link("delete_log", $key); ?>" title="Delete log: <?php echo "$timestamp - $message"; ?>">X</a></td>
+            <td class="delete"><a class="delconfirm" href="<?php echo sb_link("delete_log", $key); ?>" title="<?php i18n(SB_SHORTNAME.'/DELETE_LOG');?>: <?php echo "$timestamp - $message"; ?>">X</a></td>
             <td class="indexColumn" style="display: none;"><?php echo "$timestamp $message"; ?></td>
         </tr>
 <?php } ?>
