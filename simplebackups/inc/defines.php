@@ -1,10 +1,10 @@
 <?php
 define('SB_SHORTNAME', 'simplebackups');
-define('SB_NAME', 'Simple Backups');
+define('SB_NAME', i18n_r(SB_SHORTNAME.'/PLUGIN_NAME'));
 define('SB_VERSION', '0.0.1');
 define('SB_AUTHOR', 'Reed Murphy');
 define('SB_URL', 'http://www.reedmurphy.net/');
-define('SB_DESCRIPTION', 'Configurable, schedulable backups');
+define('SB_DESCRIPTION', i18n_r(SB_SHORTNAME.'/PLUGIN_DESCRIPTION'));
 
 define('SB_TABNAME', SB_SHORTNAME);
 define('SB_ACTION_MAIN', 'sb_action_admin');
@@ -27,5 +27,3 @@ define('SB_LOG_INFO', 1);
 define('SB_LOG_WARNING', 2);
 define('SB_LOG_ERROR', 3);
 define('SB_LOG_CRITICAL', 4);
-
-define('SB_EMAIL_BODY', "New backup attached.");

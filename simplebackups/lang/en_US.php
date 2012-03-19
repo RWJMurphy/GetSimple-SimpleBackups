@@ -1,5 +1,9 @@
 <?php
 $i18n = array(
+/* Plugin Data */
+    'PLUGIN_NAME' => "Simple Backups",
+    'PLUGIN_DESCRIPTION' => "Automatic, schedulable remote and local backups.",
+
 /* Error / status messages */
     'UNSUPPORTED_ARCHIVE' => "Unsupported archive format '%s'.",
     'UNSUPPORTED_DESTINATION' => "Unsupported destination type '%s'.",
@@ -62,5 +66,6 @@ $i18n = array(
     'SCHEDULE_WEEKLY' => "weekly",
     'SCHEDULE_MONTHLY' => "monthly",
 
-
+/* Email */
+    'EMAIL_BODY' => "Latest backup attached.",
 );
