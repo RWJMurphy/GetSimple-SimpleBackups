@@ -80,7 +80,7 @@ function sb_clean_ftp($destination, $match_pattern, $limit) {
             $result &= $del_result;
         }
     }
-    
+
     ftp_close($connection);
     return $result;
 }

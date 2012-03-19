@@ -130,7 +130,7 @@ $i18n = array(
     'AS' => "as",
     'KEEPING' => "keeping",
     'GO!' => "Go!",
-    
+
     'SCHEDULES' => "Schedules",
     'LIMIT' => "Limit",
     'LAST_RUN' => "Last Run",

@@ -65,7 +65,7 @@ function sb_upload_backup($archive, $destination) {
             unlink($archive);
         }
     }
-    return $result;    
+    return $result;
 }
 
 function sb_clean_backups($source, $destination, $format, $limit) {
