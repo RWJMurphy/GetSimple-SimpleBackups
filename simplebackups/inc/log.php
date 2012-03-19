@@ -58,7 +58,7 @@ function sb_delete_log($id) {
     unset($logs[$id]);
     $result = sb_save_thing("logs", $logs);
     if (!$result) {
-        sb_set_error("There was an error deleting the log.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_DELETING_LOG'));
     }
     return $result;
 }
@@ -66,7 +66,7 @@ function sb_delete_log($id) {
 function sb_delete_all_logs() {
     $result = sb_save_thing("logs", array());
     if (!$result) {
-        sb_set_error("There was an error deleting logs.");
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_DELETING_LOGS'));
     }
     return $result;
 }

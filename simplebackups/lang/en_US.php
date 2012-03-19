@@ -38,6 +38,8 @@ $i18n = array(
     'ERROR_DELETING_SCHEDULE' => "There was an error deleting the schedule.",
     'ERROR_SAVING_DESTINATION' => "There was an error saving destination data.",
     'ERROR_DELETING_DESTINATION' => "There was an error deleting the destination.",
+    'ERROR_DELETING_LOG' => "There was an error deleting the log.",
+    'ERROR_DELETING_LOGS' => "There was an error deleting logs.",
 
     'SUCCESS_EMAIL' => "Emailed '%s' to '%s'.",
     'SUCCESS_SCHEDULE' => "Scheduled backup '%s' run successfully.",
