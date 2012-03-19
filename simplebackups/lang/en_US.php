@@ -44,6 +44,10 @@ $i18n = array(
     'SUCCESS_EMAIL' => "Emailed '%s' to '%s'.",
     'SUCCESS_SCHEDULE' => "Scheduled backup '%s' run successfully.",
 
+    'SUCCESS_ADD_DESTINATION' => "New destination added!",
+    'SUCCESS_ADD_SCHEDULE' => "New schedule added!",
+    'SUCCESS_ADD_SOURCE' => "New source added!",
+
     'RUNNING_SCHEDULED' => "Running scheduled backup '%s'.",
 
     'NOT_IMPLEMENTED' => "%s support not implemented.",
@@ -70,4 +74,26 @@ $i18n = array(
 
 /* Email */
     'EMAIL_BODY' => "Latest backup attached.",
+
+/* HTML UI values */
+    'TYPE' => "Type",
+    'LOCAL' => "Local",
+    'FTP' => "FTP",
+    'S3' => "S3",
+    'EMAIL' => "Email",
+    'NAME' => "Name",
+    'PATH' => "Path",
+    'HOST' => "Host",
+    'PORT' => "Port",
+    'USERNAME' => "Username",
+    'PASSWORD' => "Password",
+    'REMOTE_PATH' => "Remote Path",
+    'BUCKET' => "Bucket",
+    'S3_KEY' => "Access Key Id",
+    'S3_SECRET' => "Secret Access Key",
+    'EMAIL_ADDRESS' => "Email Address",
+    'EMAIL_SUBJECT' => "Subject",
+    'ADD_DESTINATION' => "Add Destination",
+    'ADD_SCHEDULE' => "Add Schedule",
+    'FREQUENCY' => "Frequency",
 );
