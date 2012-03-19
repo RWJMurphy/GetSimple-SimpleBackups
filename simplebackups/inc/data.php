@@ -19,7 +19,7 @@ function sb_load_thing($thing) {
         foreach ($xml->children() as $thing_instance_xml) {
             $thing_instance = array();
             foreach($thing_instance_xml->children() as $child) {
-                $thing_instance[$child->getName()] = (string)$child;
+                $thing_instance[$child->getName()] = html_entity_decode((string)$child, ENT_QUOTES);
             }
             $data[(string)$thing_instance_xml['id']] = $thing_instance;
         }
@@ -41,6 +41,7 @@ function sb_save_thing($thing, $data) {
     foreach($data as $id => $thing_instance) {
         $child = $xml->addChild($thing);
         foreach($thing_instance as $attr => $value) {
+            $value = htmlentities($value, ENT_QUOTES);
             $child->addChild($attr, $value);
         }
         $child->addAttribute("id", $id);

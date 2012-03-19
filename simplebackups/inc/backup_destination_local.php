@@ -31,6 +31,7 @@ function sb_clean_local($destination, $match_pattern, $limit) {
         $filenames = array_keys($backups);
         $to_delete = count($backups) - $limit;
         for ($i = 0; $i < $to_delete; $i++) {
+            sb_log_debug("unlink($filenames[$i])");
             unlink($filenames[$i]);
         }
     }
