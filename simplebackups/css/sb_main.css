@@ -1,3 +1,23 @@
+/* Run */
+form#run input[name=limit] {
+    background-color: transparent;
+    border-width: 0 0 1px 0;
+    border-color: black;
+
+    font-size: inherit;
+    font-family: inherit;
+
+    text-align: center;
+}
+
+
+/* Add / edit */
+fieldset.type {
+    display: none;
+    border: none;
+}
+
+/* Logs */
 table.logs th.time {
     width: 12em;
 }
@@ -8,7 +28,3 @@ table.logs th.level {
 
 table.logs th.message { }
 
-fieldset.type {
-    display: none;
-    border: none;
-}
