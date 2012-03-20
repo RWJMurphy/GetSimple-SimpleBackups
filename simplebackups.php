@@ -21,10 +21,10 @@ foreach ($sb_config['menu_actions'] as $action => $description) {
 }
 add_action('index-posttemplate', 'sb_action_cron');
 
-register_script('sb_edit', SB_JSURL . 'sb_edit.js', SB_VERSION, False);
+register_script('sb_main', SB_JSURL . 'sb_main.js', SB_VERSION, False);
 register_style('sb_main', SB_CSSURL . 'sb_main.css', SB_VERSION, 'screen');
 
-queue_script('sb_edit', GSBACK);
+queue_script('sb_main', GSBACK);
 queue_style('sb_main', GSBACK);
 
 

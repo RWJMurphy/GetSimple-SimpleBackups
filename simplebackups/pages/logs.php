@@ -1,4 +1,14 @@
 <h2><?php i18n(SB_SHORTNAME.'/LOGS'); ?></h2>
+<form id="logs">
+    <label for="level">Show logs with level 
+    <select name="level">
+        <option value="<?php echo SB_LOG_DEBUG; ?>"><?php i18n(SB_SHORTNAME.'/LOG_DEBUG'); ?></option>
+        <option value="<?php echo SB_LOG_INFO; ?>" selected="selected"><?php i18n(SB_SHORTNAME.'/LOG_INFO'); ?></option>
+        <option value="<?php echo SB_LOG_WARNING; ?>"><?php i18n(SB_SHORTNAME.'/LOG_WARNING'); ?></option>
+        <option value="<?php echo SB_LOG_ERROR; ?>"><?php i18n(SB_SHORTNAME.'/LOG_ERROR'); ?></option>
+        <option value="<?php echo SB_LOG_CRITICAL; ?>"><?php i18n(SB_SHORTNAME.'/LOG_CRITICAL'); ?></option>
+    </select> or higher.</label>
+</form>
 <table class="logs">
     <tbody>
         <tr>
@@ -8,7 +18,7 @@
             <th></th>
         </tr>
 <?php
-$logs = sb_get_logs(SB_LOG_INFO);
+$logs = sb_get_logs();
 foreach ($logs as $key => $log) {
     $timestamp = date(SB_LOG_TIMEFORMAT, $log['timestamp']);
     $message = $log['message'];
@@ -33,7 +43,7 @@ foreach ($logs as $key => $log) {
         break;
     }
 ?>
-        <tr>
+        <tr data-level="<?php echo $log['level']; ?>" class="logline">
             <td class="posttitle"><?php echo $timestamp; ?></td>
             <td><?php echo $level; ?></td>
             <td><?php echo $message; ?></td>
