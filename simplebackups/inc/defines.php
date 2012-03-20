@@ -1,7 +1,7 @@
 <?php
 define('SB_SHORTNAME', 'simplebackups');
 define('SB_NAME', i18n_r(SB_SHORTNAME.'/PLUGIN_NAME'));
-define('SB_VERSION', '1.0.0');
+define('SB_VERSION', '1.0.1');
 define('SB_AUTHOR', 'Reed Murphy');
 define('SB_URL', 'http://www.reedmurphy.net/');
 define('SB_DESCRIPTION', i18n_r(SB_SHORTNAME.'/PLUGIN_DESCRIPTION'));
