@@ -3,6 +3,10 @@ Simple Backups for GetSimple
 Automated, schedulable remote and local backups for your GetSimple websites -
 because accidents happen.
 
+[Download Simple Backups from GetSimple Extend](http://get-simple.info/extend/plugin/simple-backups/394/)
+
+[Get the source for Simple Backups from GitHub](https://github.com/RWJMurphy/GetSimple-SimpleBackups)
+
 Features
 --------
 * Gain peace of mind by automatically backing up your GetSimple websites
@@ -13,10 +17,24 @@ Features
   site, to your entire GetSimple installation, to any arbitrary folder on
   your server
 
+Requirements
+------------
+* GetSimple v3.1+
+* PHP 5.x
+    * access to PHP's `exec()` function
+    * access to PHP's `curl*` functions
+* `tar` or `zip` installed on your server
+
 Installation
 ------------
 1. Extract the zip file into your website's plugins/ directory
 2. In your GetSimple admin panel, you should see a new tab: "Simple Backups"
+
+Optionally:
+
+3. Set up a hourly cron job to poll your website, so that backups are guaranteed to run:
+
+`   15 * * * * curl -s http://your.getsimplewebsite.com/ > /dev/null`
 
 Configuration
 -------------
@@ -49,3 +67,17 @@ server.  Too simple.
 
 **Sources**, **Destinations** and **Schedules** are all easily editable from
 the "Simple Backups" tab in your website's admin panel.
+
+Cron
+----
+Simple Backups makes uses of the `index-posttemplate` hook, so that it can
+check for **Schedules** to run whenever a page is loaded on your GetSimple
+website. While this is fine for most sites, if you want more guarantee that
+your backups will run *every* hour, you're recommended to set up a cron job to
+poll your website. Any of the following examples would work:
+    
+    # Using curl, poll the website at 15 minutes past every hour
+    15 * * * * curl -s http://your.getsimplewebsite.com/ > /dev/null
+    
+    # ... and the same, using wget
+    15 * * * * wget -q http://your.getsimplewebsite.com/ -O /dev/null
