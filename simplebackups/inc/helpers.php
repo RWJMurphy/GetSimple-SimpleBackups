@@ -108,3 +108,31 @@ function sb_executable_exists($executable) {
     exec("which $executable", $outout, $retval);
     return ($retval === 0);
 }
+
+function sb_recursive_dirscan($directory, $excludes=Null) {
+    $filenames = array();
+    $directories = array($directory);
+    while(count($directories) > 0) {
+        $current_dir = array_pop($directories);
+        foreach (scandir($current_dir) as $filename) {
+            if ($filename == "." || $filename == "..") {
+                continue;
+            }
+            $filename = $current_dir . $filename;
+            if (is_dir($filename)) {
+                $filename = sb_path_trailing_slash($filename);
+                if (is_array($excludes)) {
+                    if (in_array($filename, $excludes)) {
+                        continue;
+                    }
+                }
+                $directories[] = $filename;
+            } else {
+                $filenames[] = $filename;
+            }
+        }
+    }
+
+    return $filenames;
+}
+
