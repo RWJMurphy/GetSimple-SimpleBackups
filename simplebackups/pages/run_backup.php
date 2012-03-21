@@ -50,7 +50,7 @@ $last = $data['last_run'][0];
 <?php foreach($data['archive_formats'] as $format): ?>
     <option <?php if ($last['archive_format'] == $format) { echo 'selected="selected" '; } ?> value="<?php echo $format; ?>" ><?php echo $format; ?></option>
 <?php endforeach; ?>
-</select>, <?php i18n(SB_SHORTNAME.'/KEEPING'); ?> <input name="limit" size="2" <?php if ($last['limit']) { echo 'value="' . $last['limit'] . '" '; } ?> /> <?php i18n(SB_SHORTNAME.'/BACKUPS'); ?>.
+</select>, <?php i18n(SB_SHORTNAME.'/KEEPING'); ?> <input name="limit" size="2" <?php if ($last['limit']) { echo 'value="' . htmlspecialchars($last['limit']) . '" '; } ?> /> <?php i18n(SB_SHORTNAME.'/BACKUPS'); ?>.
 
 <input type="submit" value="<?php i18n(SB_SHORTNAME.'/GO!'); ?>" />
 </form>

@@ -21,7 +21,7 @@
 $logs = sb_get_logs();
 foreach ($logs as $key => $log) {
     $timestamp = date(SB_LOG_TIMEFORMAT, $log['timestamp']);
-    $message = $log['message'];
+    $message = htmlspecialchars($log['message']);
     switch($log['level']) {
     case(SB_LOG_DEBUG):
         $level = i18n_r(SB_SHORTNAME.'/LOG_DEBUG');

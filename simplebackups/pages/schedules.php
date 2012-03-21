@@ -15,7 +15,7 @@ $data = sb_load();
         </tr>
 <?php
 foreach ($data['schedules'] as $key => $schedule) {
-    $name = $schedule['name'];
+    $name = htmlspecialchars($schedule['name']);
     $frequency = $schedule['frequency'];
     $last_run_time = isset($schedule['last_run_time']) ? date(SB_LOG_TIMEFORMAT, $schedule['last_run_time']) : "never";
     $last_run_status = Null;
@@ -24,9 +24,9 @@ foreach ($data['schedules'] as $key => $schedule) {
     }
     $last_run = "$last_run_time: $last_run_status";
 
-    $source = $data['sources'][$schedule['source']]['name'];
-    $limit = $schedule['limit'];
-    $destination = $data['destinations'][$schedule['destination']]['name'];
+    $source = htmlspecialchars($data['sources'][$schedule['source']]['name']);
+    $limit = htmlspecialchars($schedule['limit']);
+    $destination = htmlspecialchars($data['destinations'][$schedule['destination']]['name']);
 ?>
         <tr>
             <td class="posttitle"><a title="<?php i18n(SB_SHORTNAME.'/EDIT_SCHEDULE'); ?>: <?php echo $name; ?>" href="<?php echo sb_link("edit_schedule", $key); ?>"><?php echo $name; ?></a></td>

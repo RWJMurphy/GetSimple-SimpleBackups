@@ -12,7 +12,7 @@ $data = sb_load();
         </tr>
 <?php
 foreach ($data['sources'] as $key => $source) {
-    $name = $source['name'];
+    $name = htmlspecialchars($source['name']);
     $type = $source['type'];
     $description = "";
     switch($type) {
@@ -22,6 +22,7 @@ foreach ($data['sources'] as $key => $source) {
     default:
         break;
     }
+    $description = htmlspecialchars($description);
 ?>
         <tr>
             <td class="posttitle"><a title="<?php i18n(SB_SHORTNAME.'/EDIT_SOURCE'); ?>: <?php echo $name; ?>" href="<?php echo sb_link("edit_source", $key); ?>"><?php echo $name; ?></a></td>

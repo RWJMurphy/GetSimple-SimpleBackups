@@ -12,7 +12,7 @@ $data = sb_load();
         </tr>
 <?php
 foreach ($data['destinations'] as $key => $destination) {
-    $name = $destination['name'];
+    $name = htmlspecialchars($destination['name']);
     $type = $destination['type'];
     $description = "";
     switch($type) {
@@ -39,6 +39,7 @@ foreach ($data['destinations'] as $key => $destination) {
     default:
         break;
     }
+    $description = htmlspecialchars($description);
 ?>
         <tr>
             <td class="posttitle"><a title="<?php i18n(SB_SHORTNAME.'/EDIT_DESTINATION'); ?>: <?php echo $name; ?>" href="<?php echo sb_link("edit_destination", $key); ?>"><?php echo $name; ?></a></td>
