@@ -152,4 +152,10 @@ $i18n = array(
 
     /* S3 Errors */
     'S3_CONNECT_FAILED' => "Connecting to S3 bucket '%s' failed - %s",
+
+    /* XML Errors */
+    'XML_LOAD_FAILED' => "Error(s) were encountered loading XML file '%s': %s",
+    'XML_LOAD_FALLBACK' => "XML load fallback mode triggered for '%s' - backing original up to '%s'",
+    'XML_FALLBACK_ENTITY' => "Falling back to entity conversion for loading XML '%s'",
+    'XML_FALLBACK_DOMDOCUMENT' => "Falling back to DOMDocument for loading XML '%s'",
 );

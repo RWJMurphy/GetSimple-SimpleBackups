@@ -2,6 +2,7 @@
 require_once __DIR__.'/defines.php';
 require_once __DIR__.'/config.php';
 require_once __DIR__.'/contrib/S3.php';
+require_once __DIR__.'/contrib/convert_entities.php';
 require_once __DIR__.'/data.php';
 require_once __DIR__.'/helpers.php';
 require_once __DIR__.'/admin.php';
