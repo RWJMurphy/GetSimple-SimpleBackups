@@ -18,6 +18,7 @@ function sb_add_destination($type, $postdata) {
         if (!$postdata['ftp_host']) {
             sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_VALID_FTP_HOSTNAME'));
         }
+        $postdata['ftp_port'] = intval($postdata['ftp_port']);
         if (!$postdata['ftp_port']) {
             $postdata['ftp_port'] = SB_FTP_PORT_DEFAULT;
         } elseif ($postdata['ftp_port'] <= 0 || $postdata['ftp_port'] > 65535) {

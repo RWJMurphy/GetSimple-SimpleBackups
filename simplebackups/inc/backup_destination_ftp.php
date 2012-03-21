@@ -1,6 +1,6 @@
 <?php
 function sb_validate_ftp($destination, $close=True) {
-    $connection = ftp_connect($destination['host'], $destination['port']);
+    $connection = @ftp_connect($destination['host'], $destination['port']);
     if (!$connection) {
         sb_set_error(i18n_r(SB_SHORTNAME.'/FTP_CONNECT_FAILED'), $destination['name']);
         sb_log_error(i18n_r(SB_SHORTNAME.'/FTP_CONNECT_FAILED'), $destination['name']);
