@@ -21,9 +21,15 @@ Requirements
 ------------
 * GetSimple v3.1+
 * PHP 5.x
+* For .tar.gz archives:
     * access to PHP's `exec()` function
+    * the `tar` and `gzip` commands installed on your server
+* For .zip archives, one of:
+    * PHP 5.2+ with --enable-zip
+    * The [PECL zip extension](http://pecl.php.net/package/zip)
+    * the `zip` command installed on your server, and `exec()` enabled in PHP
+* For S3 storage
     * access to PHP's `curl*` functions
-* `tar` or `zip` installed on your server
 
 Installation
 ------------
