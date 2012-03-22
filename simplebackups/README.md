@@ -52,6 +52,7 @@ In Simple Backups, there are three things to configure: **Sources**,
 
 A **Source** defines a directory that contains things you want backed up.
 Simple Backups comes with two sources pre-defined:
+
 * "Data Files" points to your GetSimple website's `data/` directory and will
   include all user and plugin generated data from your site.
 * "All Files" points to your GetSimple website's root and includes your entire
