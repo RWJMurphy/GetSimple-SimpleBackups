@@ -72,9 +72,9 @@ $i18n = array(
     'DELETE_ALL_LOGS' => "Delete all logs",
 
 /* Default Source & Destinations */
-    'ALL_FILES' => "All files",
-    'DATA_FILES' => "Data files",
-    'LOCAL_BACKUPS' => "Local backups folder",
+    'ALL_FILES' => "All Files",
+    'DATA_FILES' => "Data Files",
+    'LOCAL_BACKUPS' => "Local Backups Folder",
 
 /* Schedule types / names */
     'SCHEDULE_HOURLY' => "hourly",
