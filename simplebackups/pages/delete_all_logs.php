@@ -1,5 +1,5 @@
 <?php
-$result = sb_delete_all_logs($target);
+$result = sb_delete_all_logs();
 $redirect = "logs";
 if (!$result) {
     $message_class = "error";
