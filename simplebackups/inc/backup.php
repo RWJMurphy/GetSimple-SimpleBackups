@@ -105,7 +105,7 @@ function sb_run_scheduled_backup($schedule) {
     $result = sb_run_backup($source, $destination, $format, $limit);
 
     if (!$result) {
-        sb_log_error(i18n_r(SB_SHORTNAME.'/ERROR_SCHEDULE'), array($schedule['name'], sb_get_error()));
+        sb_log_error(i18n_r(SB_SHORTNAME.'/ERROR_SCHEDULE'), array($schedule['name'], sb_get_errors()));
     } else {
         sb_log_info(i18n_r(SB_SHORTNAME.'/SUCCESS_SCHEDULE'), $schedule['name']);
     }
