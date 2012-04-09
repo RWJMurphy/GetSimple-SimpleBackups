@@ -1,15 +1,17 @@
 <?php
-require_once __DIR__.'/defines.php';
-require_once __DIR__.'/config.php';
-require_once __DIR__.'/contrib/S3.php';
-require_once __DIR__.'/contrib/convert_entities.php';
-require_once __DIR__.'/data.php';
-require_once __DIR__.'/helpers.php';
-require_once __DIR__.'/admin.php';
-require_once __DIR__.'/backup.php';
-require_once __DIR__.'/cron.php';
-require_once __DIR__.'/destinations.php';
-require_once __DIR__.'/email.php';
-require_once __DIR__.'/log.php';
-require_once __DIR__.'/schedules.php';
-require_once __DIR__.'/sources.php';
+define('SB_INCLUDEPATH', dirname(__FILE__));
+
+require_once SB_INCLUDEPATH.'/defines.php';
+require_once SB_INCLUDEPATH.'/config.php';
+require_once SB_INCLUDEPATH.'/contrib/S3.php';
+require_once SB_INCLUDEPATH.'/contrib/convert_entities.php';
+require_once SB_INCLUDEPATH.'/data.php';
+require_once SB_INCLUDEPATH.'/helpers.php';
+require_once SB_INCLUDEPATH.'/admin.php';
+require_once SB_INCLUDEPATH.'/backup.php';
+require_once SB_INCLUDEPATH.'/cron.php';
+require_once SB_INCLUDEPATH.'/destinations.php';
+require_once SB_INCLUDEPATH.'/email.php';
+require_once SB_INCLUDEPATH.'/log.php';
+require_once SB_INCLUDEPATH.'/schedules.php';
+require_once SB_INCLUDEPATH.'/sources.php';
