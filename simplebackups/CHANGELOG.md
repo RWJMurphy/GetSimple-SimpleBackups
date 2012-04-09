@@ -1,3 +1,8 @@
+Version 1.0.3 (April 2012)
+==========================
+* No longer using the __DIR__ magic variable - should now work with PHP < 5.3.0
+* Minor bug fixes
+
 Version 1.0.2 (March 2012)
 ==========================
 * Fixed bug with non-XML entities in various fields
