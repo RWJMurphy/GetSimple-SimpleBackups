@@ -19,7 +19,7 @@ $i18n = array(
 
     'ERROR_VALID_LOCAL_PATH' => "You must supply a local path.",
     'ERROR_VALID_FTP_HOSTNAME' => "You must supply a hostname for the FTP server.",
-    'ERROR_VALID_FTP_POST' => "Invalid FTP port.",
+    'ERROR_VALID_FTP_PORT' => "Invalid FTP port.",
     'ERROR_VALID_S3_BUCKET' => "You must supply a bucket name.",
     'ERROR_VALID_S3_KEY' => "You must supply an Access Key Id.",
     'ERROR_VALID_S3_SECRET' => "You must provide a Secret Access Key.",
@@ -41,6 +41,13 @@ $i18n = array(
     'ERROR_DELETING_DESTINATION' => "There was an error deleting the destination.",
     'ERROR_DELETING_LOG' => "There was an error deleting the log.",
     'ERROR_DELETING_LOGS' => "There was an error deleting logs.",
+
+    'ERROR_FILEMOVE' => "There was an error moving the archive to the destination.",
+    'ERROR_ZIPARCHIVE_OPEN' => "There was an error opening the .zip archive.",
+    'FTP_CLEAN_FAILED' => "There was an error while cleaning up old backups on the FTP server.",
+    'FTP_UPLOAD_FAILED' => "There was an error uploading the archive to the FTP server.",
+    'S3_CLEAN_FAILED' => "There was an error cleaning up old backups on the S3 bucket.",
+    'S3_UPLOAD_FAILED' => "There was an error uploading to the S3 bucket.",
 
     'ERROR_TAR_NOT_FOUND' => "Could not find the `tar' program - cannot create .tar.gz archives",
     'ERROR_ZIP_NOT_FOUND' => "Could not find the `zip' program - cannot create .zip archives",
