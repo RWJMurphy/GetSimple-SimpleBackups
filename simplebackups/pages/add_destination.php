@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <p><label for="s3_path"><?php i18n(SB_SHORTNAME.'/REMOTE_PATH'); ?>:</label><input class="text" name="s3_path" value="<?php if (isset($_SESSION['add_destination']['s3_path'])) { echo htmlspecialchars($_SESSION['add_destination']['s3_path']); } ?>" /></p>
 </fieldset>
 <fieldset class="type" id="fs_email">
-    <p><label for="email_address"><?php i18n(SB_SHORTNAME.'/EMAIL_ADDRESS'); ?>:</label><input class="text" name="email_address" value="<?php if (isset($_SESSION['add_destination']['email_address'])) { echo htmlspecialchars($_SESSION['add_destination']['email_address']); } ?>" /></p>
+<p><label for="email_address"><?php i18n(SB_SHORTNAME.'/EMAIL_ADDRESS'); ?>:</label><input class="text" name="email_address" value="<?php if (isset($_SESSION['add_destination']['email_address'])) { echo htmlspecialchars($_SESSION['add_destination']['email_address']); } ?>" /><br /><span class="aside"><?php i18n(SB_SHORTNAME.'/FREE_EMAIL_WARNING'); ?></span></p>
     <p><label for="email_subject"><?php i18n(SB_SHORTNAME.'/EMAIL_SUBJECT'); ?>:</label><input class="text" name="email_subject" value="<?php if (isset($_SESSION['add_destination']['email_subject'])) { echo htmlspecialchars($_SESSION['add_destination']['email_subject']); } ?>" /></p>
     </fieldset>
     <p><input class="submit" type="submit" value="<?php i18n(SB_SHORTNAME.'/ADD_DESTINATION'); ?>" /></p>

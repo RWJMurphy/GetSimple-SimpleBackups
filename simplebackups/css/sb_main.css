@@ -17,6 +17,11 @@ fieldset.type {
     border: none;
 }
 
+span.aside {
+    color: #666;
+    font-style: italic;
+}
+
 /* Logs */
 table.logs th.time {
     width: 12em;
