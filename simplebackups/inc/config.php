@@ -82,7 +82,8 @@ $sb_config = array(
         "daily" => i18n_r(SB_SHORTNAME.'/SCHEDULE_DAILY'),
         "weekly" => i18n_r(SB_SHORTNAME.'/SCHEDULE_WEEKLY'),
         "monthly" => i18n_r(SB_SHORTNAME.'/SCHEDULE_MONTHLY')
-    )
+    ),
+    "log_max_count" => 100,
 );
 
 function sb_config() {

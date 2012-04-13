@@ -70,3 +70,13 @@ function sb_delete_all_logs() {
     }
     return $result;
 }
+
+function sb_truncate_logs($count) {
+    $logs = sb_load_thing("logs");
+    $logs = array_slice($logs, -$count);
+    $result = sb_save_thing("logs", $logs);
+    if (!$result) {
+        sb_set_error(i18n_r(SB_SHORTNAME.'/ERROR_DELETING_LOG'));
+    }
+    return $result;
+}

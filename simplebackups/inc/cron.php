@@ -5,6 +5,8 @@ function sb_cron() {
     $sb_config = sb_config();
     $schedules = $data['schedules'];
 
+    sb_truncate_logs($sb_config['log_max_count']);
+
     foreach ($schedules as $id => $schedule) {
         $next_run_time = Null;
         if (!isset($schedule['last_run_time']) || $schedule['last_run_time'] == Null) {
