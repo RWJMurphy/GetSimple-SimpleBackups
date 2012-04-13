@@ -4,8 +4,8 @@ function sb_upload_email($archive, $destination) {
     $result = sb_send_email($from, $destination['address'], $destination['subject'], i18n_r(SB_SHORTNAME.'/EMAIL_BODY'), $archive);
     if (!$result) {
         $error = i18n_r(SB_SHORTNAME.'/ERROR_EMAIL');
-        sb_set_error($error, $array(basename($archive), $destination['name']));
-        sb_log_error($error, $array(basename($archive), $destination['name']));
+        sb_set_error($error, array(basename($archive), $destination['name']));
+        sb_log_error($error, array(basename($archive), $destination['name']));
     } else {
         sb_log_info(i18n_r(SB_SHORTNAME.'/SUCCESS_EMAIL'), array(basename($archive), $destination['name']));
     }
