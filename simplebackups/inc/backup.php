@@ -63,10 +63,8 @@ function sb_upload_backup($archive, $destination) {
         $result = False;
         break;
     }
-    if (!$result) {
-        if (file_exists($archive)) {
-            unlink($archive);
-        }
+    if (file_exists($archive)) {
+        unlink($archive);
     }
     return $result;
 }
