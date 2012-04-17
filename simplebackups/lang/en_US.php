@@ -135,7 +135,7 @@ $i18n = array(
     'DELETE_LOG' => "Delete log",
     'RUN_BACKUP_NOW' => "Run Backup Now",
 
-    'FREE_EMAIL_WARNING' => "Please note: Free email accounts like Gmail, will probably reject your backups.",
+    'FREE_EMAIL_WARNING' => "Please note: Free email accounts, like Gmail, will probably reject your backups.",
 
     'BACKUP' => "Backup",
     "BACKUPS" => "backups",
