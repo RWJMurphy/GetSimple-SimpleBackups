@@ -1,10 +1,10 @@
 <?php
-require_once __DIR__.'/backup_archive_formats.php';
+require_once SB_INCLUDEPATH.'/backup_archive_formats.php';
 
-require_once __DIR__.'/backup_destination_local.php';
-require_once __DIR__.'/backup_destination_ftp.php';
-require_once __DIR__.'/backup_destination_s3.php';
-require_once __DIR__.'/backup_destination_email.php';
+require_once SB_INCLUDEPATH.'/backup_destination_local.php';
+require_once SB_INCLUDEPATH.'/backup_destination_ftp.php';
+require_once SB_INCLUDEPATH.'/backup_destination_s3.php';
+require_once SB_INCLUDEPATH.'/backup_destination_email.php';
 
 function sb_run_backup($source, $destination, $format, $limit) {
     $result = False;

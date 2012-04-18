@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/backup_archive_format_zip.php';
+require_once SB_INCLUDEPATH.'/backup_archive_format_zip.php';
 
 function sb_create_targz($source, $exclude=Null) {
     $sb_config = sb_config();
