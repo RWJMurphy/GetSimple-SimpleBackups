@@ -16,6 +16,8 @@ Features
 * Backup as much or as little as you need - from just the page data for your
   site, to your entire GetSimple installation, to any arbitrary folder on
   your server
+* Bask in the joy of using the [2nd place winner](http://get-simple.info/blog/2012/04/march-create-a-thon-winners-announced/)
+  of GetSimple's March 2012 Create-a-thon
 
 Requirements
 ------------
